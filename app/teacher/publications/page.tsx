@@ -230,7 +230,7 @@ export default function TeacherPublicationsPage() {
                     />
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "var(--space-4)" }}>
+                  <div className="grid-form-3">
                     <div className="form-group">
                       <label className="form-label">Journal / Conference Name</label>
                       <input
@@ -265,7 +265,7 @@ export default function TeacherPublicationsPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                  <div className="grid-form-2">
                     <div className="form-group">
                       <label className="form-label">DOI (e.g. 10.1038/s41587-020-0000-0)</label>
                       <input

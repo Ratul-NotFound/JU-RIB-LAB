@@ -128,7 +128,7 @@ export default async function MemberDetailPage({
 
       <section className="section">
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "var(--space-10)", alignItems: "start" }}>
+          <div className="split-content-sidebar">
             {/* Main */}
             <div>
               {profile.bio && (

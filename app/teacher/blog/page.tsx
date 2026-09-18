@@ -200,7 +200,7 @@ export default function TeacherBlogPage() {
                     />
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                  <div className="grid-form-2">
                     <div className="form-group">
                       <label className="form-label">Cover Image URL</label>
                       <input

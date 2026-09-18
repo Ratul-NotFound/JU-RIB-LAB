@@ -1,11 +1,5 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import HeroBioVisual from "@/components/home/HeroBioVisual";
-import LiveLabTicker from "@/components/home/LiveLabTicker";
-import BioWorkbench from "@/components/home/BioWorkbench";
-import ResearchDomains from "@/components/home/ResearchDomains";
-import WorkflowPipeline from "@/components/home/WorkflowPipeline";
-import EquipmentShowcase from "@/components/home/EquipmentShowcase";
 
 async function getHomeData() {
   try {
@@ -31,265 +25,191 @@ async function getHomeData() {
     ]);
     return { settings, featuredProjects, recentPosts, stats };
   } catch {
-    return { settings: null, featuredProjects: [], recentPosts: [], stats: [14, 48, 26, 18] };
+    return { settings: null, featuredProjects: [], recentPosts: [], stats: [0, 0, 0, 0] };
   }
 }
+
+const RESEARCH_AREAS = [
+  { icon: "🧬", title: "Genomics & Sequencing", desc: "Advanced DNA sequencing, genome assembly, and comparative genomics studies." },
+  { icon: "🔬", title: "Molecular Biology", desc: "Gene expression, protein synthesis, and cellular mechanisms research." },
+  { icon: "🌱", title: "Agri-Biotechnology", desc: "Developing improved crop varieties through genetic modification and breeding." },
+  { icon: "💊", title: "Biopharmaceuticals", desc: "Research on therapeutic proteins, vaccines, and diagnostic tools." },
+  { icon: "🦠", title: "Microbial Biotechnology", desc: "Exploiting microorganisms for industrial and environmental applications." },
+  { icon: "🧪", title: "Bioinformatics", desc: "Computational analysis of biological data and structural biology." },
+];
 
 export default async function HomePage() {
   const { settings, featuredProjects, recentPosts, stats } = await getHomeData();
   const [projectCount, pubCount, memberCount, postCount] = stats;
 
-  const labName = settings?.labName ?? "Biotechnology & Genetic Engineering Laboratory";
+  const labName = settings?.labName ?? "Biotechnology & Genetic Engineering Lab";
   const university = settings?.university ?? "Jahangirnagar University";
-  const tagline =
-    settings?.tagline ??
-    "Advancing life sciences through high-throughput genomics, CRISPR engineering, molecular medicine, and computational biology.";
+  const tagline = settings?.tagline ?? "Advancing life sciences through innovation, collaboration, and cutting-edge research.";
 
   return (
     <>
-      {/* ── HERO SECTION ─────────────────────────────────── */}
-      <section className="hero" id="hero" style={{ overflow: "hidden", position: "relative", minHeight: "90vh", display: "flex", alignItems: "center" }}>
+      {/* ── HERO ──────────────────────────────────── */}
+      <section className="hero" id="hero">
         <div className="hero-bg-pattern" />
         <div className="hero-grid" />
 
-        {/* Ambient bioluminescent glow orbs */}
-        <div
-          style={{
-            position: "absolute",
-            top: "10%",
-            right: "15%",
-            width: 450,
-            height: 450,
-            background: "radial-gradient(circle, rgba(0, 240, 200, 0.18) 0%, rgba(0, 200, 150, 0.05) 50%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(40px)",
-            animation: "float 8s ease-in-out infinite",
-            pointerEvents: "none",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "10%",
-            left: "5%",
-            width: 350,
-            height: 350,
-            background: "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(40px)",
-            animation: "float 10s ease-in-out infinite reverse",
-            pointerEvents: "none",
-          }}
-        />
+        {/* Floating DNA orbs */}
+        <div style={{
+          position: "absolute", top: "15%", right: "8%",
+          width: 300, height: 300,
+          background: "radial-gradient(circle, rgba(0,200,150,0.2) 0%, transparent 70%)",
+          borderRadius: "50%", animation: "float 6s ease-in-out infinite",
+        }} />
+        <div style={{
+          position: "absolute", bottom: "20%", left: "5%",
+          width: 200, height: 200,
+          background: "radial-gradient(circle, rgba(0,200,150,0.12) 0%, transparent 70%)",
+          borderRadius: "50%", animation: "float 8s ease-in-out infinite reverse",
+        }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 2, padding: "var(--space-12) var(--space-6)" }}>
-          <div className="hero-two-col">
-            {/* Left Column: Mission, Badges & CTA */}
-            <div>
-              {/* University Seal Badge */}
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  background: "rgba(0, 240, 180, 0.12)",
-                  border: "1px solid rgba(0, 240, 180, 0.3)",
-                  borderRadius: "999px",
-                  padding: "7px 18px",
-                  fontSize: "0.82rem",
-                  fontWeight: 700,
-                  color: "var(--color-accent)",
-                  marginBottom: "var(--space-6)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <span
-                  style={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    background: "var(--color-accent)",
-                    boxShadow: "0 0 10px var(--color-accent)",
-                    display: "inline-block",
-                    animation: "pulse-dot 2s ease infinite",
-                  }}
-                />
-                Department of BGE · {university}
-              </div>
-
-              <h1
-                className="text-display"
-                style={{
-                  color: "white",
-                  marginBottom: "var(--space-6)",
-                  lineHeight: 1.12,
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                Decoding Life. <br />
-                <span className="gradient-text" style={{ background: "linear-gradient(135deg, #00F0FF 0%, #00E599 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                  Engineering Solutions.
-                </span>
-              </h1>
-
-              <p
-                style={{
-                  color: "rgba(255, 255, 255, 0.82)",
-                  fontSize: "1.18rem",
-                  lineHeight: 1.7,
-                  marginBottom: "var(--space-8)",
-                  maxWidth: 580,
-                }}
-              >
-                {tagline}
-              </p>
-
-              <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginBottom: "var(--space-10)" }}>
-                <Link href="/research" className="btn btn-accent btn-lg" style={{ boxShadow: "0 8px 30px rgba(0, 200, 150, 0.35)" }}>
-                  🧬 Explore Research Areas →
-                </Link>
-                <a
-                  href="#workbench"
-                  className="btn btn-lg"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.1)",
-                    border: "1.5px solid rgba(255, 255, 255, 0.25)",
-                    color: "white",
-                    backdropFilter: "blur(10px)",
-                  }}
-                >
-                  🔬 Interactive Bio-Lab
-                </a>
-              </div>
-
-              {/* Lab Telemetry Mini Badges */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "var(--space-6)",
-                  paddingTop: "var(--space-6)",
-                  borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-                  flexWrap: "wrap",
-                }}
-              >
-                {[
-                  { n: `${projectCount || 20}+`, label: "Active Projects" },
-                  { n: `${pubCount || 50}+`, label: "High-Impact Papers" },
-                  { n: `${memberCount || 30}+`, label: "Scientists & Fellows" },
-                  { n: "Q1 / Top 5%", label: "Research Impact" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <div
-                      style={{
-                        fontSize: "1.6rem",
-                        fontWeight: 800,
-                        fontFamily: "var(--font-heading)",
-                        color: "var(--color-accent)",
-                      }}
-                    >
-                      {s.n}
-                    </div>
-                    <div style={{ fontSize: "0.8rem", color: "rgba(255, 255, 255, 0.6)", fontWeight: 500 }}>
-                      {s.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
+        <div className="container">
+          <div className="hero-content" style={{ maxWidth: 720 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: "8px",
+              background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.3)",
+              borderRadius: "999px", padding: "6px 16px",
+              fontSize: "0.8rem", fontWeight: 600, color: "var(--color-accent)",
+              marginBottom: "var(--space-6)", letterSpacing: "0.05em", textTransform: "uppercase",
+            }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", display: "inline-block", animation: "pulse-dot 2s ease infinite" }} />
+              Active Research Lab · {university}
             </div>
 
-            {/* Right Column: 3D DNA Canvas & Lab HUD Visualizer */}
-            <div>
-              <HeroBioVisual />
+            <h1 className="text-display" style={{ color: "white", marginBottom: "var(--space-6)" }}>
+              {labName}
+            </h1>
+            <p style={{
+              color: "rgba(255,255,255,0.75)", fontSize: "1.2rem",
+              lineHeight: 1.7, marginBottom: "var(--space-8)", maxWidth: 580,
+            }}>
+              {tagline}
+            </p>
+
+            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap" }}>
+              <Link href="/research" className="btn btn-accent btn-lg">
+                Explore Research →
+              </Link>
+              <Link href="/about" className="btn btn-lg" style={{
+                background: "rgba(255,255,255,0.12)",
+                border: "1.5px solid rgba(255,255,255,0.3)",
+                color: "white",
+              }}>
+                Learn More
+              </Link>
+            </div>
+
+            {/* Mini stats */}
+            <div style={{
+              display: "flex", gap: "var(--space-8)", marginTop: "var(--space-12)",
+              paddingTop: "var(--space-8)",
+              borderTop: "1px solid rgba(255,255,255,0.12)",
+              flexWrap: "wrap",
+            }}>
+              {[
+                { n: projectCount || "20+", label: "Projects" },
+                { n: pubCount || "50+", label: "Publications" },
+                { n: memberCount || "30+", label: "Members" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div style={{ fontSize: "1.8rem", fontWeight: 800, fontFamily: "var(--font-heading)", color: "var(--color-accent)" }}>{s.n}</div>
+                  <div style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── LIVE TELEMETRY MARQUEE TICKER ───────────────── */}
-      <LiveLabTicker />
-
-      {/* ── STATS COUNTER BAR ───────────────────────────── */}
+      {/* ── STATS BAR ─────────────────────────────── */}
       <section style={{ padding: "var(--space-16) 0", background: "var(--color-surface)" }}>
         <div className="container">
           <div className="grid-4">
             {[
-              { n: `${projectCount || 24}+`, label: "Funded Research Grants", icon: "🔭", sub: "National & International" },
-              { n: `${pubCount || 65}+`, label: "Peer-Reviewed Publications", icon: "📄", sub: "Nature, Springer, Elsevier" },
-              { n: `${memberCount || 38}+`, label: "Faculty, PhDs & Students", icon: "👨‍🔬", sub: "Multidisciplinary Team" },
-              { n: "100%", label: "Open Science Commitment", icon: "🌐", sub: "Reproducible Protocols" },
+              { n: `${projectCount || "20"}+`, label: "Research Projects", icon: "🔭" },
+              { n: `${pubCount || "50"}+`, label: "Publications", icon: "📄" },
+              { n: `${memberCount || "30"}+`, label: "Lab Members", icon: "👨‍🔬" },
+              { n: `${postCount || "10"}+`, label: "Blog Articles", icon: "✍️" },
             ].map((stat) => (
-              <div key={stat.label} className="stat-card" style={{ padding: "var(--space-6)" }}>
-                <div style={{ fontSize: "2.4rem", marginBottom: "var(--space-2)" }}>{stat.icon}</div>
-                <div className="stat-number" style={{ fontSize: "2.2rem" }}>{stat.n}</div>
-                <div className="stat-label" style={{ fontSize: "0.95rem", fontWeight: 700 }}>{stat.label}</div>
-                <div style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", marginTop: 2 }}>{stat.sub}</div>
+              <div key={stat.label} className="stat-card">
+                <div style={{ fontSize: "2rem", marginBottom: "var(--space-3)" }}>{stat.icon}</div>
+                <div className="stat-number">{stat.n}</div>
+                <div className="stat-label">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── INTERACTIVE IN-SILICO BIO-WORKBENCH ─────────── */}
-      <section id="workbench" className="section" style={{ background: "#05131C", padding: "var(--space-20) 0" }}>
+      {/* ── RESEARCH AREAS ────────────────────────── */}
+      <section className="section" style={{ background: "var(--color-bg)" }}>
         <div className="container">
-          <div className="section-header" style={{ marginBottom: "var(--space-10)" }}>
-            <div className="section-eyebrow" style={{ color: "var(--color-accent)" }}>Virtual Laboratory Simulation</div>
-            <h2 className="section-title" style={{ color: "white" }}>
-              Explore the Bio-Workbench
-            </h2>
-            <p className="section-subtitle" style={{ color: "rgba(255, 255, 255, 0.7)" }}>
-              Test real genomic transcription, view stress-response transcriptomic expression heatmaps, and toggle confocal multichannel fluorescence microscopy.
+          <div className="section-header">
+            <div className="section-eyebrow">What We Do</div>
+            <h2 className="section-title">Research Areas</h2>
+            <p className="section-subtitle">
+              Our multidisciplinary team works across six major research domains in biotechnology and genetic engineering.
             </p>
           </div>
-
-          <BioWorkbench />
+          <div className="grid-3">
+            {RESEARCH_AREAS.map((area) => (
+              <div key={area.title} className="card card-body" style={{ textAlign: "left" }}>
+                <div style={{
+                  width: 52, height: 52, borderRadius: "var(--radius-lg)",
+                  background: "var(--color-accent-subtle)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontSize: "1.6rem", marginBottom: "var(--space-4)",
+                }}>
+                  {area.icon}
+                </div>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "var(--space-2)", color: "var(--color-secondary)" }}>
+                  {area.title}
+                </h3>
+                <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
+                  {area.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "var(--space-10)" }}>
+            <Link href="/research" className="btn btn-outline">View All Research Areas</Link>
+          </div>
         </div>
       </section>
 
-      {/* ── CORE RESEARCH PILLARS ───────────────────────── */}
-      <ResearchDomains />
-
-      {/* ── SCIENTIFIC METHODOLOGY WORKFLOW ─────────────── */}
-      <WorkflowPipeline />
-
-      {/* ── LABORATORY INFRASTRUCTURE & EQUIPMENT ───────── */}
-      <EquipmentShowcase />
-
-      {/* ── FEATURED PROJECTS ───────────────────────────── */}
+      {/* ── FEATURED PROJECTS ─────────────────────── */}
       {featuredProjects.length > 0 && (
         <section className="section" style={{ background: "var(--color-surface)" }}>
           <div className="container">
             <div className="section-header">
-              <div className="section-eyebrow">Active Investigations</div>
-              <h2 className="section-title">Featured Research Projects</h2>
-              <p className="section-subtitle">
-                Ongoing and recently completed genomic and biotechnological investigations shaping national agricultural and healthcare futures.
-              </p>
+              <div className="section-eyebrow">Our Work</div>
+              <h2 className="section-title">Featured Projects</h2>
+              <p className="section-subtitle">Ongoing and recently completed research projects shaping the future of biotechnology.</p>
             </div>
             <div className="grid-3">
               {featuredProjects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="project-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                    <div className="project-card-img-placeholder" style={{ background: "linear-gradient(135deg, #0A4F3C, #00C896)", fontSize: "3rem" }}>
-                      🧬
-                    </div>
-                    <div className="project-card-body" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div className="project-card">
+                    <div className="project-card-img-placeholder">🧬</div>
+                    <div className="project-card-body">
                       <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
-                        <span className={`badge badge-${project.status === "ONGOING" ? "success" : "info"}`}>
+                        <span className={`badge badge-${project.status === "ONGOING" ? "success" : project.status === "COMPLETED" ? "info" : "warning"}`}>
                           {project.status}
                         </span>
                         {project.category && <span className="badge badge-neutral">{project.category}</span>}
                       </div>
-                      <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
+                      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
                         {project.title}
                       </h3>
-                      <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.6, flex: 1 }}>
-                        {project.description.slice(0, 140)}…
+                      <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.5, flex: 1 }}>
+                        {project.description.slice(0, 120)}…
                       </p>
-                      <div style={{ marginTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 700 }}>
-                        View Research Data →
+                      <div style={{ marginTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 600 }}>
+                        Read more →
                       </div>
                     </div>
                   </div>
@@ -297,57 +217,98 @@ export default async function HomePage() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: "var(--space-10)" }}>
-              <Link href="/projects" className="btn btn-primary btn-lg">
-                Browse All Research Projects
-              </Link>
+              <Link href="/projects" className="btn btn-primary">All Projects</Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* ── RECENT LAB BLOG & PUBLICATIONS ──────────────── */}
+      {/* ── WHY JOIN US ───────────────────────────── */}
+      <section className="section" style={{ background: "linear-gradient(135deg, var(--color-primary-dark), var(--color-primary))", color: "white" }}>
+        <div className="container">
+          <div className="split-2-col">
+            <div>
+              <div className="section-eyebrow" style={{ color: "var(--color-accent)" }}>Why BGE Lab</div>
+              <h2 style={{ color: "white", fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, marginBottom: "var(--space-6)" }}>
+                Where Science Meets Innovation
+              </h2>
+              <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "var(--space-8)", fontSize: "1.05rem" }}>
+                Our lab provides state-of-the-art facilities, a collaborative environment, and mentorship from leading researchers to help you make a meaningful impact in life sciences.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+                {[
+                  "Modern sequencing & PCR equipment",
+                  "Active national & international collaborations",
+                  "Publication support for students",
+                  "Funded research opportunities",
+                ].map((item) => (
+                  <div key={item} style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-accent)", flexShrink: 0 }} />
+                    <span style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: "var(--space-8)" }}>
+                <Link href="/contact" className="btn btn-accent btn-lg">Join Our Lab</Link>
+              </div>
+            </div>
+            <div className="grid-2">
+              {[
+                { icon: "🔬", label: "Advanced Lab" },
+                { icon: "📚", label: "Research Support" },
+                { icon: "🤝", label: "Collaborations" },
+                { icon: "🏆", label: "Awards & Grants" },
+              ].map((item) => (
+                <div key={item.label} style={{
+                  background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  borderRadius: "var(--radius-xl)",
+                  padding: "var(--space-6)",
+                  textAlign: "center",
+                  backdropFilter: "blur(10px)",
+                }}>
+                  <div style={{ fontSize: "2.5rem", marginBottom: "var(--space-3)" }}>{item.icon}</div>
+                  <div style={{ color: "white", fontWeight: 600, fontSize: "0.9rem" }}>{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── RECENT BLOG ───────────────────────────── */}
       {recentPosts.length > 0 && (
         <section className="section" style={{ background: "var(--color-bg)" }}>
           <div className="container">
             <div className="section-header">
-              <div className="section-eyebrow">Academic Reflections</div>
-              <h2 className="section-title">Latest from Our Researchers</h2>
-              <p className="section-subtitle">Protocols, experiment troubleshooting, and scientific perspectives written by faculty and students.</p>
+              <div className="section-eyebrow">From the Lab</div>
+              <h2 className="section-title">Latest from Our Blog</h2>
+              <p className="section-subtitle">Insights, discoveries, and stories from our researchers and students.</p>
             </div>
             <div className="grid-3">
               {recentPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="blog-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-                    <div
-                      style={{
-                        height: 180,
-                        background: "linear-gradient(135deg, var(--color-surface-3), var(--color-accent-subtle))",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "3.2rem",
-                      }}
-                    >
-                      ✍️
-                    </div>
-                    <div className="blog-card-body" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div className="blog-card">
+                    <div style={{
+                      height: 180, background: "linear-gradient(135deg, var(--color-surface-3), var(--color-accent-subtle))",
+                      display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3rem",
+                    }}>✍️</div>
+                    <div className="blog-card-body">
                       <div className="blog-card-meta">
                         <span>{post.author.name}</span>
                         <span>·</span>
-                        <span>
-                          {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}
-                        </span>
+                        <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}</span>
                       </div>
-                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
+                      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
                         {post.title}
                       </h3>
                       {post.excerpt && (
-                        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.5, flex: 1 }}>
-                          {post.excerpt.slice(0, 110)}…
+                        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.5 }}>
+                          {post.excerpt.slice(0, 100)}…
                         </p>
                       )}
-                      <div style={{ marginTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 700 }}>
-                        Read Article →
+                      <div style={{ marginTop: "auto", paddingTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 600 }}>
+                        Read more →
                       </div>
                     </div>
                   </div>
@@ -355,93 +316,25 @@ export default async function HomePage() {
               ))}
             </div>
             <div style={{ textAlign: "center", marginTop: "var(--space-10)" }}>
-              <Link href="/blog" className="btn btn-outline">
-                All Lab Articles & Notes
-              </Link>
+              <Link href="/blog" className="btn btn-outline">All Articles</Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* ── CALL TO ACTION: COLLABORATE & JOIN ─────────── */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, #062E23 0%, #0A4F3C 60%, #06392D 100%)",
-          color: "white",
-          padding: "var(--space-24) 0",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: "radial-gradient(rgba(0, 240, 200, 0.15) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 760 }}>
-          <div
-            style={{
-              width: 72,
-              height: 72,
-              borderRadius: "50%",
-              background: "rgba(0, 240, 180, 0.15)",
-              border: "1.5px solid rgba(0, 240, 180, 0.35)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "2.4rem",
-              margin: "0 auto var(--space-6)",
-            }}
-          >
-            🧬
-          </div>
-
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 800,
-              marginBottom: "var(--space-4)",
-              color: "white",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Advance Life Sciences With Us
+      {/* ── CTA ───────────────────────────────────── */}
+      <section style={{ background: "var(--color-accent-subtle)", padding: "var(--space-20) 0" }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <div style={{ fontSize: "3rem", marginBottom: "var(--space-4)" }}>🧬</div>
+          <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, marginBottom: "var(--space-4)", color: "var(--color-secondary)" }}>
+            Ready to Advance Science Together?
           </h2>
-
-          <p
-            style={{
-              fontSize: "1.15rem",
-              color: "rgba(255, 255, 255, 0.8)",
-              marginBottom: "var(--space-8)",
-              lineHeight: 1.7,
-            }}
-          >
-            We welcome prospective graduate researchers, postdoctoral fellows, academic partners, and biotechnology industry collaborators to work together on transformative science.
+          <p style={{ fontSize: "1.05rem", color: "var(--color-text-muted)", marginBottom: "var(--space-8)", maxWidth: 560, margin: "0 auto var(--space-8)" }}>
+            Whether you're a student, researcher, or collaborator — we'd love to connect.
           </p>
-
           <div style={{ display: "flex", gap: "var(--space-4)", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/contact" className="btn btn-accent btn-lg" style={{ boxShadow: "0 8px 30px rgba(0, 200, 150, 0.4)" }}>
-              🤝 Inquire for Collaboration
-            </Link>
-            <Link
-              href="/members"
-              className="btn btn-lg"
-              style={{
-                background: "rgba(255, 255, 255, 0.12)",
-                border: "1.5px solid rgba(255, 255, 255, 0.3)",
-                color: "white",
-              }}
-            >
-              👨‍🔬 Meet Lab Researchers
-            </Link>
+            <Link href="/contact" className="btn btn-primary btn-lg">Get in Touch</Link>
+            <Link href="/members" className="btn btn-outline btn-lg">Meet the Team</Link>
           </div>
         </div>
       </section>

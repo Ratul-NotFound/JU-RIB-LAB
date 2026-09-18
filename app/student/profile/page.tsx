@@ -99,7 +99,7 @@ export default function StudentProfilePage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+              <div className="grid-form-2">
                 <div className="form-group">
                   <label className="form-label">Full Name *</label>
                   <input
@@ -140,7 +140,7 @@ export default function StudentProfilePage() {
                 />
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+              <div className="grid-form-2">
                 <div className="form-group">
                   <label className="form-label">Profile Avatar URL</label>
                   <input
@@ -161,7 +161,7 @@ export default function StudentProfilePage() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+              <div className="grid-form-2">
                 <div className="form-group">
                   <label className="form-label">Google Scholar Profile URL</label>
                   <input
@@ -182,7 +182,7 @@ export default function StudentProfilePage() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+              <div className="grid-form-2">
                 <div className="form-group">
                   <label className="form-label">LinkedIn URL</label>
                   <input

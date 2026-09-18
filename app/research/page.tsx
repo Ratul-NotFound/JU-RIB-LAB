@@ -65,12 +65,7 @@ export default function ResearchPage() {
         <div className="container">
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-10)" }}>
             {RESEARCH_THEMES.map((theme, i) => (
-              <div key={theme.title} style={{
-                display: "grid",
-                gridTemplateColumns: i % 2 === 0 ? "1fr 2fr" : "2fr 1fr",
-                gap: "var(--space-10)",
-                alignItems: "center",
-              }}>
+              <div key={theme.title} className={i % 2 === 0 ? "split-research-item" : "split-research-item reverse"}>
                 {i % 2 !== 0 && (
                   <div>
                     <div className="highlight-bar" />

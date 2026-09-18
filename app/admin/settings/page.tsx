@@ -49,13 +49,13 @@ export default function AdminSettingsPage() {
         <div className="card card-body">
           <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-5)", color: "var(--color-secondary)" }}>🏷️ Basic Information</h3>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+            <div className="grid-form-2">
               <div className="form-group"><label className="form-label">Lab Name</label><input className="form-input" value={form.labName} onChange={e => setForm({ ...form, labName: e.target.value })} /></div>
               <div className="form-group"><label className="form-label">University</label><input className="form-input" value={form.university} onChange={e => setForm({ ...form, university: e.target.value })} /></div>
             </div>
             <div className="form-group"><label className="form-label">Tagline (hero subtitle)</label><input className="form-input" value={form.tagline} onChange={e => setForm({ ...form, tagline: e.target.value })} /></div>
             <div className="form-group"><label className="form-label">About (long description)</label><textarea className="form-textarea" rows={4} value={form.about} onChange={e => setForm({ ...form, about: e.target.value })} /></div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+            <div className="grid-form-2">
               <div className="form-group"><label className="form-label">Vision</label><textarea className="form-textarea" rows={3} value={form.vision} onChange={e => setForm({ ...form, vision: e.target.value })} /></div>
               <div className="form-group"><label className="form-label">Mission</label><textarea className="form-textarea" rows={3} value={form.mission} onChange={e => setForm({ ...form, mission: e.target.value })} /></div>
             </div>
@@ -67,7 +67,7 @@ export default function AdminSettingsPage() {
           <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-5)", color: "var(--color-secondary)" }}>📞 Contact Details</h3>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <div className="form-group"><label className="form-label">Address</label><input className="form-input" value={form.address} onChange={e => setForm({ ...form, address: e.target.value })} /></div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "var(--space-4)" }}>
+            <div className="grid-form-3">
               <div className="form-group"><label className="form-label">Email</label><input type="email" className="form-input" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></div>
               <div className="form-group"><label className="form-label">Phone</label><input className="form-input" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} /></div>
               <div className="form-group"><label className="form-label">Founded Year</label><input type="number" className="form-input" value={form.foundedYear} onChange={e => setForm({ ...form, foundedYear: e.target.value })} /></div>
@@ -78,7 +78,7 @@ export default function AdminSettingsPage() {
         {/* Social */}
         <div className="card card-body">
           <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-5)", color: "var(--color-secondary)" }}>🔗 Social Media</h3>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+          <div className="grid-form-2">
             <div className="form-group"><label className="form-label">Facebook URL</label><input className="form-input" placeholder="https://facebook.com/…" value={form.facebookUrl} onChange={e => setForm({ ...form, facebookUrl: e.target.value })} /></div>
             <div className="form-group"><label className="form-label">Twitter/X URL</label><input className="form-input" placeholder="https://twitter.com/…" value={form.twitterUrl} onChange={e => setForm({ ...form, twitterUrl: e.target.value })} /></div>
             <div className="form-group"><label className="form-label">LinkedIn URL</label><input className="form-input" placeholder="https://linkedin.com/…" value={form.linkedinUrl} onChange={e => setForm({ ...form, linkedinUrl: e.target.value })} /></div>

@@ -212,7 +212,7 @@ export default function TeacherProjectsPage() {
                     />
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                  <div className="grid-form-2">
                     <div className="form-group">
                       <label className="form-label">Status</label>
                       <select
@@ -237,7 +237,7 @@ export default function TeacherProjectsPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                  <div className="grid-form-2">
                     <div className="form-group">
                       <label className="form-label">Funding Agency / Grant</label>
                       <input

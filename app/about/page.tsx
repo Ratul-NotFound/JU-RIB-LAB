@@ -39,7 +39,7 @@ export default async function AboutPage() {
       {/* ── About Text ── */}
       <section className="section">
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-16)", alignItems: "center" }}>
+          <div className="split-2-col">
             <div>
               <div className="highlight-bar" />
               <h2 className="text-h2" style={{ marginBottom: "var(--space-5)" }}>Who We Are</h2>

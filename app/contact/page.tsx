@@ -32,7 +32,7 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "var(--space-12)", alignItems: "start" }}>
+          <div className="split-contact">
             {/* Contact info */}
             <div>
               <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Lab Information</h2>
