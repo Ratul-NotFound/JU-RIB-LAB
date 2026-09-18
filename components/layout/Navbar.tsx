@@ -80,10 +80,25 @@ export function Navbar() {
         <div className="container navbar-inner">
           {/* Logo */}
           <Link href="/" className="nav-logo" aria-label="Bioresources Technology and Industrial Biotechnology Laboratory Home">
-            <div className="nav-logo-icon">🧬</div>
+            <div className="nav-logo-icon" style={{
+              background: "var(--color-primary)",
+              color: "#FFFFFF",
+              borderRadius: "var(--radius-sm)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 36,
+              height: 36,
+              fontWeight: 800,
+              fontSize: "0.75rem",
+              letterSpacing: "0.05em",
+              fontFamily: "var(--font-mono)",
+            }}>
+              JU
+            </div>
             <div className="nav-logo-text">
-              <span className="nav-logo-name" style={{ letterSpacing: "-0.01em" }}>BTIB Laboratory</span>
-              <span className="nav-logo-sub">Bioresources Technology &amp; Industrial Biotechnology</span>
+              <span className="nav-logo-name" style={{ letterSpacing: "-0.01em", fontWeight: 700 }}>BTIB Laboratory</span>
+              <span className="nav-logo-sub" style={{ fontSize: "0.68rem" }}>Department of Biotechnology &amp; Genetic Engineering</span>
             </div>
           </Link>
 

@@ -30,17 +30,20 @@ export function Footer() {
                   width: 36,
                   height: 36,
                   background: "var(--color-primary)",
-                  borderRadius: "var(--radius-md)",
+                  borderRadius: "var(--radius-sm)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "1.1rem",
+                  color: "#FFFFFF",
+                  fontWeight: 800,
+                  fontSize: "0.75rem",
+                  fontFamily: "var(--font-mono)",
                   flexShrink: 0,
                 }}
               >
-                🧬
+                JU
               </div>
-              <div className="footer-logo-name">BTIB Lab</div>
+              <div className="footer-logo-name">BTIB Laboratory</div>
             </div>
             <p className="footer-desc">
               The Bioresources Technology and Industrial Biotechnology Laboratory at Jahangirnagar University is
