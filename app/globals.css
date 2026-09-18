@@ -862,7 +862,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-header {
   background: var(--color-secondary);
   border-bottom: 1px solid #1E293B;
-  padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-12);
+  padding: clamp(var(--space-8), 5vw, var(--space-12)) 0 clamp(var(--space-8), 4vw, var(--space-10));
   color: white;
   position: relative;
 }

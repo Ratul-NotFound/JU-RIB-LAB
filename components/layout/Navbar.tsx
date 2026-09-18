@@ -98,7 +98,7 @@ export function Navbar() {
             </div>
             <div className="nav-logo-text">
               <span className="nav-logo-name" style={{ letterSpacing: "-0.01em", fontWeight: 800, color: "var(--color-secondary)" }}>BTIB Laboratory</span>
-              <span className="nav-logo-sub" style={{ fontSize: "0.7rem", color: "var(--color-text-muted)" }}>Department of Biotechnology &amp; Genetic Engineering</span>
+              <span className="nav-logo-sub hide-mobile" style={{ fontSize: "0.7rem", color: "var(--color-text-muted)" }}>Department of Biotechnology &amp; Genetic Engineering</span>
             </div>
           </Link>
 
