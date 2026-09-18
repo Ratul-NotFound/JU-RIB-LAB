@@ -10,14 +10,14 @@ export async function GET() {
       include: { members: { include: { profile: { select: { fullName: true } } } } },
     });
     return NextResponse.json(projects);
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 });
   }
 }
 
 export async function POST(req: Request) {
   const session = await auth();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
   const { title, description, content, status, category, tags, isFeatured, startDate, endDate, fundingSource } = body;
@@ -47,11 +47,11 @@ export async function POST(req: Request) {
         startDate: startDate ? new Date(startDate) : null,
         endDate: endDate ? new Date(endDate) : null,
         fundingSource,
-        createdBy: session.user.id!,
+        createdBy: session.user.id,
       },
     });
     return NextResponse.json(project, { status: 201 });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to create project" }, { status: 500 });
   }
 }

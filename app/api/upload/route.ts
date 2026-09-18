@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     const dataUri = `data:${file.type};base64,${buffer.toString("base64")}`;
 
     return NextResponse.json({ url: dataUri });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to upload file" }, { status: 500 });
   }
 }

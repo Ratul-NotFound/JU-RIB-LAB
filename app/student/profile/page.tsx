@@ -7,7 +7,6 @@ export default function StudentProfilePage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [profileId, setProfileId] = useState<string | null>(null);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -24,24 +23,22 @@ export default function StudentProfilePage() {
   });
 
   useEffect(() => {
-    fetch("/api/members")
+    fetch("/api/members/me")
       .then((r) => r.json())
-      .then((members) => {
-        if (Array.isArray(members) && members.length > 0) {
-          const first = members[0];
-          setProfileId(first.id);
+      .then((member) => {
+        if (member && !member.error) {
           setForm({
-            fullName: first.fullName || "",
-            designation: first.designation || "Research Student",
-            department: first.department || "Biotechnology & Genetic Engineering",
-            bio: first.bio || "",
-            avatarUrl: first.avatarUrl || "",
-            phone: first.phone || "",
-            linkedin: first.linkedin || "",
-            googleScholar: first.googleScholar || "",
-            researchGate: first.researchGate || "",
-            orcid: first.orcid || "",
-            website: first.website || "",
+            fullName: member.fullName || "",
+            designation: member.designation || "Research Student",
+            department: member.department || "Biotechnology & Genetic Engineering",
+            bio: member.bio || "",
+            avatarUrl: member.avatarUrl || "",
+            phone: member.phone || "",
+            linkedin: member.linkedin || "",
+            googleScholar: member.googleScholar || "",
+            researchGate: member.researchGate || "",
+            orcid: member.orcid || "",
+            website: member.website || "",
           });
         }
       })
@@ -54,12 +51,12 @@ export default function StudentProfilePage() {
     setSaving(true);
     setSuccess(false);
     try {
-      if (profileId) {
-        await fetch(`/api/members/${profileId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
+      const res = await fetch("/api/members/me", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
         setSuccess(true);
       }
     } catch {}

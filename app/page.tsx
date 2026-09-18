@@ -77,7 +77,7 @@ export default async function HomePage() {
               marginBottom: "var(--space-6)", letterSpacing: "0.05em", textTransform: "uppercase",
             }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", display: "inline-block", animation: "pulse-dot 2s ease infinite" }} />
-              Active Research Lab
+              Active Research Lab · {university}
             </div>
 
             <h1 className="text-display" style={{ color: "white", marginBottom: "var(--space-6)" }}>

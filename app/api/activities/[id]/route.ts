@@ -11,7 +11,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     });
     if (!activity) return NextResponse.json({ error: "Activity not found" }, { status: 404 });
     return NextResponse.json(activity);
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch activity" }, { status: 500 });
   }
 }
@@ -40,7 +40,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
       },
     });
     return NextResponse.json(updated);
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to update activity" }, { status: 500 });
   }
 }
@@ -53,7 +53,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   try {
     await prisma.activity.delete({ where: { id } });
     return NextResponse.json({ success: true });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete activity" }, { status: 500 });
   }
 }

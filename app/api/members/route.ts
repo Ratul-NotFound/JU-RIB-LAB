@@ -14,14 +14,14 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
     return NextResponse.json(profiles);
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch members" }, { status: 500 });
   }
 }
 
 export async function POST(req: Request) {
   const session = await auth();
-  if (!session || session.user.role !== "ADMIN") {
+  if (!session?.user?.role || session.user.role !== "ADMIN") {
     return NextResponse.json({ error: "Unauthorized. Admin only." }, { status: 401 });
   }
 
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(user, { status: 201 });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to create member" }, { status: 500 });
   }
 }

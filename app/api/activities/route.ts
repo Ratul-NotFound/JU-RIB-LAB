@@ -10,14 +10,14 @@ export async function GET() {
       include: { creator: { select: { name: true } } },
     });
     return NextResponse.json(activities);
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch activities" }, { status: 500 });
   }
 }
 
 export async function POST(req: Request) {
   const session = await auth();
-  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
   const { title, description, content, thumbnailUrl, eventDate, endDate, location, type, isFeatured } = body;
@@ -46,11 +46,11 @@ export async function POST(req: Request) {
         location,
         type: type ?? "OTHER",
         isFeatured: isFeatured ?? false,
-        createdBy: session.user.id!,
+        createdBy: session.user.id,
       },
     });
     return NextResponse.json(activity, { status: 201 });
-  } catch (e) {
+  } catch {
     return NextResponse.json({ error: "Failed to create activity" }, { status: 500 });
   }
 }
