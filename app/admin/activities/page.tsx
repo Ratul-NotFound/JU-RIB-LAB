@@ -221,7 +221,7 @@ export default function AdminActivitiesPage() {
                   />
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Activity Type</label>
                     <select
@@ -248,7 +248,7 @@ export default function AdminActivitiesPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Event Start Date & Time *</label>
                     <input

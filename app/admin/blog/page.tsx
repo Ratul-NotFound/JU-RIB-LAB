@@ -80,7 +80,7 @@ export default function AdminBlogPage() {
                 <div className="form-group"><label className="form-label">Title *</label><input required className="form-input" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} /></div>
                 <div className="form-group"><label className="form-label">Excerpt (short summary)</label><textarea className="form-textarea" rows={2} value={form.excerpt} onChange={e => setForm({ ...form, excerpt: e.target.value })} /></div>
                 <div className="form-group"><label className="form-label">Content * (HTML supported)</label><textarea required className="form-textarea" rows={8} value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} placeholder="<p>Write your article content here…</p>" /></div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-3)" }}>
+                <div className="grid-form-2">
                   <div className="form-group"><label className="form-label">Tags (comma-separated)</label><input className="form-input" placeholder="genomics, research" value={form.tags} onChange={e => setForm({ ...form, tags: e.target.value })} /></div>
                   <div className="form-group"><label className="form-label">Status</label><select className="form-select" value={form.status} onChange={e => setForm({ ...form, status: e.target.value })}><option value="DRAFT">Draft</option><option value="PUBLISHED">Published</option></select></div>
                 </div>

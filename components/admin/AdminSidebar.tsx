@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
@@ -36,74 +37,114 @@ const NAV_ITEMS = [
 
 export function AdminSidebar({ user }: { user: any }) {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <aside className="sidebar">
-      {/* Logo */}
-      <div className="sidebar-logo">
-        <div className="sidebar-logo-icon">🧬</div>
-        <div>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.9rem" }}>BGE Lab Admin</div>
-          <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)" }}>Management Panel</div>
-        </div>
-      </div>
-
-      <nav className="sidebar-nav">
-        {NAV_ITEMS.map((group) => (
-          <div key={group.section}>
-            <div className="sidebar-section-label">{group.section}</div>
-            {group.links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`sidebar-link ${pathname === link.href || (link.href !== "/admin" && pathname.startsWith(link.href)) ? "active" : ""}`}
-              >
-                <span style={{ fontSize: "1rem" }}>{link.icon}</span>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        ))}
-
-        {/* Quick public links */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "var(--space-4)", paddingTop: "var(--space-4)" }}>
-          <div className="sidebar-section-label">Quick View</div>
-          <Link href="/" target="_blank" className="sidebar-link">
-            <span>🌐</span> View Website
-          </Link>
-        </div>
-      </nav>
-
-      {/* User info at bottom */}
-      <div style={{
-        position: "absolute", bottom: 0, left: 0, right: 0,
-        padding: "var(--space-4) var(--space-5)",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
-        display: "flex", alignItems: "center", gap: "var(--space-3)",
-      }}>
-        <div style={{
-          width: 36, height: 36, borderRadius: "50%",
-          background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontWeight: 700, fontSize: "0.9rem", flexShrink: 0,
-        }}>
-          {user?.name?.charAt(0) ?? "A"}
-        </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "white", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-            {user?.name ?? "Admin"}
-          </div>
-          <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)" }}>Administrator</div>
+    <>
+      {/* Mobile admin header bar */}
+      <div className="admin-mobile-bar">
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+          <span style={{ fontSize: "1.2rem" }}>🧬</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "0.95rem" }}>BGE Admin</span>
         </div>
         <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          style={{ color: "rgba(255,255,255,0.4)", fontSize: "1rem", background: "none", border: "none", cursor: "pointer", padding: 0 }}
-          title="Sign Out"
-          aria-label="Sign Out"
+          onClick={() => setOpen(!open)}
+          className="btn btn-sm btn-ghost"
+          style={{ color: "white", padding: "var(--space-2) var(--space-3)", fontSize: "1.1rem" }}
+          aria-label="Toggle admin navigation"
         >
-          ⇥
+          {open ? "✕" : "☰"}
         </button>
       </div>
-    </aside>
+
+      {/* Backdrop overlay for mobile drawer */}
+      <div
+        className={`sidebar-overlay ${open ? "open" : ""}`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
+
+      <aside className={`sidebar ${open ? "open" : ""}`}>
+        {/* Logo */}
+        <div className="sidebar-logo">
+          <div className="sidebar-logo-icon">🧬</div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.9rem" }}>BGE Lab Admin</div>
+            <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)" }}>Management Panel</div>
+          </div>
+          <button
+            onClick={() => setOpen(false)}
+            className="btn btn-ghost btn-sm"
+            style={{ color: "rgba(255,255,255,0.6)", padding: "4px 8px", display: open ? "block" : "none" }}
+            aria-label="Close sidebar"
+          >
+            ✕
+          </button>
+        </div>
+
+        <nav className="sidebar-nav">
+          {NAV_ITEMS.map((group) => (
+            <div key={group.section}>
+              <div className="sidebar-section-label">{group.section}</div>
+              {group.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`sidebar-link ${pathname === link.href || (link.href !== "/admin" && pathname.startsWith(link.href)) ? "active" : ""}`}
+                >
+                  <span style={{ fontSize: "1rem" }}>{link.icon}</span>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+
+          {/* Quick public links */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", marginTop: "var(--space-4)", paddingTop: "var(--space-4)" }}>
+            <div className="sidebar-section-label">Quick View</div>
+            <Link href="/" target="_blank" className="sidebar-link">
+              <span>🌐</span> View Website
+            </Link>
+          </div>
+        </nav>
+
+        {/* User info at bottom */}
+        <div style={{
+          position: "sticky", bottom: 0, left: 0, right: 0,
+          background: "var(--color-secondary)",
+          padding: "var(--space-4) var(--space-5)",
+          borderTop: "1px solid rgba(255,255,255,0.08)",
+          display: "flex", alignItems: "center", gap: "var(--space-3)",
+          marginTop: "auto",
+        }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: "50%",
+            background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontWeight: 700, fontSize: "0.9rem", flexShrink: 0,
+          }}>
+            {user?.name?.charAt(0) ?? "A"}
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "white", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              {user?.name ?? "Admin"}
+            </div>
+            <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)" }}>Administrator</div>
+          </div>
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            style={{ color: "rgba(255,255,255,0.4)", fontSize: "1rem", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+            title="Sign Out"
+            aria-label="Sign Out"
+          >
+            ⇥
+          </button>
+        </div>
+      </aside>
+    </>
   );
 }
