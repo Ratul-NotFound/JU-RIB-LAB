@@ -602,6 +602,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════════
+   INSTITUTIONAL SCIENTIFIC BACKGROUNDS & ELEVATIONS
+═══════════════════════════════════════════════════════ */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-dark-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.card-interactive {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  border-color: var(--color-primary-border);
+}
+
+
+/* ═══════════════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════════════ */
 .navbar {
