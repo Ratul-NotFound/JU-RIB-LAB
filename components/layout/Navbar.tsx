@@ -46,17 +46,9 @@ export function Navbar() {
   };
 
   return (
-    <>
+    <header className="site-header">
       {/* Top Institutional Affiliation Header Bar */}
-      <div className="top-institution-bar" style={{
-        background: "#090D16",
-        color: "#94A3B8",
-        fontSize: "0.75rem",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-        padding: "6px 0",
-        position: "relative",
-        zIndex: 101,
-      }}>
+      <div className="top-institution-bar">
         <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "6px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "6px", letterSpacing: "0.02em" }}>
             <span style={{ fontWeight: 700, color: "#E2E8F0" }}>Jahangirnagar University</span>
@@ -72,33 +64,19 @@ export function Navbar() {
       </div>
 
       <nav
-        className="navbar navbar-solid"
-        style={{ top: "auto", position: "sticky" }}
+        className="navbar"
         role="navigation"
         aria-label="Main navigation"
       >
         <div className="container navbar-inner">
           {/* Logo */}
           <Link href="/" className="nav-logo" aria-label="Bioresources Technology and Industrial Biotechnology Laboratory Home">
-            <div className="nav-logo-icon" style={{
-              background: "var(--color-primary)",
-              color: "#FFFFFF",
-              borderRadius: "var(--radius-sm)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 38,
-              height: 38,
-              fontWeight: 800,
-              fontSize: "0.8rem",
-              letterSpacing: "0.05em",
-              fontFamily: "var(--font-mono)",
-            }}>
+            <div className="nav-logo-icon">
               JU
             </div>
             <div className="nav-logo-text">
-              <span className="nav-logo-name" style={{ letterSpacing: "-0.01em", fontWeight: 800, color: "var(--color-secondary)" }}>BTIB Laboratory</span>
-              <span className="nav-logo-sub hide-mobile" style={{ fontSize: "0.7rem", color: "var(--color-text-muted)" }}>Department of Biotechnology &amp; Genetic Engineering</span>
+              <span className="nav-logo-name">BTIB Lab</span>
+              <span className="nav-logo-sub">Jahangirnagar University</span>
             </div>
           </Link>
 
@@ -109,14 +87,6 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   className={`nav-link ${pathname === link.href ? "active" : ""}`}
-                  style={{
-                    fontWeight: pathname === link.href ? 700 : 500,
-                    color: pathname === link.href ? "var(--color-primary)" : "var(--color-text-2)",
-                    borderBottom: pathname === link.href ? "2px solid var(--color-primary)" : "2px solid transparent",
-                    borderRadius: 0,
-                    padding: "10px 14px",
-                    fontSize: "0.875rem",
-                  }}
                 >
                   {link.label}
                 </Link>
@@ -150,6 +120,7 @@ export function Navbar() {
                       minWidth: "170px",
                       overflow: "hidden",
                       zIndex: 200,
+                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
                     }}
                     role="menu"
                   >
@@ -181,7 +152,7 @@ export function Navbar() {
                 )}
               </div>
             ) : (
-              <Link href="/login" className="btn btn-sm btn-primary">
+              <Link href="/login" className="btn btn-sm btn-primary" style={{ whiteSpace: "nowrap" }}>
                 Portal Login
               </Link>
             )}
@@ -213,16 +184,17 @@ export function Navbar() {
       {menuOpen && (
         <div
           style={{
-            position: "fixed",
-            top: "var(--nav-height)",
+            position: "absolute",
+            top: "100%",
             left: 0,
             right: 0,
-            background: "var(--color-surface)",
-            borderBottom: "1px solid var(--color-border-subtle)",
-            boxShadow: "var(--shadow-lg)",
+            background: "#FFFFFF",
+            borderBottom: "1px solid var(--color-border)",
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
             zIndex: 99,
             padding: "var(--space-4) var(--space-6)",
-            animation: "slideUp 0.2s ease",
+            maxHeight: "calc(100vh - 120px)",
+            overflowY: "auto",
           }}
         >
           <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
@@ -247,6 +219,6 @@ export function Navbar() {
           </ul>
         </div>
       )}
-    </>
+    </header>
   );
 }
