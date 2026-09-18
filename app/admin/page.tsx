@@ -35,16 +35,13 @@ export default async function AdminDashboard() {
         <div className="grid-4" style={{ marginBottom: "var(--space-10)" }}>
           {CARDS.map((card) => (
             <a key={card.label} href={card.href} style={{ textDecoration: "none" }}>
-              <div style={{
+              <div className="card admin-stat-card" style={{
                 background: "var(--color-surface)",
                 borderRadius: "var(--radius-lg)",
                 border: "1px solid var(--color-border)",
                 padding: "var(--space-6)",
-                transition: "border-color 0.2s ease",
                 cursor: "pointer",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-primary)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)"; }}>
+              }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "var(--space-4)" }}>
                   <div style={{
                     width: 44, height: 32, borderRadius: "var(--radius-sm)",
