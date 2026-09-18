@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Team Members",
-  description: "Meet the faculty, researchers, and students of the BGE Lab.",
+  description: "Meet the faculty, researchers, and students of the Bioresources Technology and Industrial Biotechnology Laboratory.",
 };
 
 async function getMembers() {

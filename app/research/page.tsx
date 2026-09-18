@@ -2,50 +2,50 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Research Areas",
-  description: "Explore the research themes and focus areas of the BGE Lab.",
+  description: "Explore the core research themes of the Bioresources Technology and Industrial Biotechnology Laboratory.",
 };
 
 const RESEARCH_THEMES = [
   {
-    icon: "🧬",
-    title: "Genomics & Next-Generation Sequencing",
-    areas: ["Whole genome sequencing", "Metagenomics", "Transcriptomics (RNA-seq)", "Comparative genomics", "Epigenomics"],
-    description: "We utilize state-of-the-art sequencing technologies to decode the genetic information of organisms ranging from microbes to complex plants and animals. Our genomics research helps unravel the molecular basis of biological traits and diseases.",
+    icon: "🦠",
+    title: "Microbial Biotechnology",
+    areas: ["Industrial enzyme production (amylases, proteases, cellulases)", "Fermentation technology & optimization", "Microbial secondary metabolites", "Probiotics and functional cultures", "Antimicrobial compound screening"],
+    description: "Our microbial biotechnology research investigates beneficial bacterial and fungal strains to develop scalable bio-based production platforms for high-value enzymes, pharmaceuticals, and industrial biochemicals.",
     color: "#0A4F3C",
   },
   {
-    icon: "🔬",
-    title: "Molecular Biology & Cell Biology",
-    areas: ["Gene expression analysis", "Protein-protein interactions", "CRISPR-Cas9 gene editing", "Recombinant DNA technology", "Cell signaling pathways"],
-    description: "Our molecular biology research focuses on understanding the fundamental mechanisms that govern cellular processes, with applications in medicine, agriculture, and environmental science.",
+    icon: "⚙️",
+    title: "Bioprocess Engineering",
+    areas: ["Bioreactor design & operation", "Upstream & downstream bioprocess optimization", "Bio-separation and membrane filtration", "Submerged and solid-state fermentation", "Process scale-up and techno-economics"],
+    description: "Bridging laboratory discoveries and commercial applications through advanced bioprocess engineering. We optimize cultivation conditions, mass transfer, and yield efficiency for green industrial biomanufacturing.",
     color: "#1A1A2E",
   },
   {
-    icon: "🌱",
-    title: "Agricultural Biotechnology",
-    areas: ["Crop improvement", "Disease resistance breeding", "Drought tolerance research", "Biopesticide development", "Soil microbiome studies"],
-    description: "We apply biotechnological tools to develop improved crop varieties that can withstand climate change, resist diseases, and produce higher yields — contributing to food security in Bangladesh and beyond.",
+    icon: "🌿",
+    title: "Algae Biotechnology & Carbon Capture",
+    areas: ["'Liquid-Tree' urban photobioreactor innovation", "High-density microalgae mass cultivation", "Biological CO2 capture and air purification", "Biofuel and lipid feedstock synthesis", "Wastewater phytoremediation"],
+    description: "Pioneering microalgal technology for environmental sustainability. Our flagship 'Liquid-Tree' photobioreactor initiative utilizes microalgae to capture atmospheric carbon dioxide and generate clean oxygen in urban environments.",
     color: "#065F46",
   },
   {
-    icon: "💊",
-    title: "Medical Biotechnology & Biopharmaceuticals",
-    areas: ["Diagnostic marker discovery", "Vaccine development", "Therapeutic protein production", "Cancer biomarker research", "Pharmacogenomics"],
-    description: "Research aimed at developing novel diagnostics, vaccines, and therapeutic proteins to address unmet medical needs, particularly diseases prevalent in South Asia.",
-    color: "#1E40AF",
-  },
-  {
-    icon: "🦠",
-    title: "Microbial Biotechnology",
-    areas: ["Industrial fermentation", "Bioremediation", "Probiotic development", "Antimicrobial resistance", "Extremophile biology"],
-    description: "Exploiting the extraordinary diversity of microorganisms for industrial, environmental, and biomedical applications. We study microbial communities and develop biotechnology-based solutions.",
+    icon: "♻️",
+    title: "Biomaterial Processing & Waste Valorization",
+    areas: ["Agro-industrial residue valorization", "Biodegradable bioplastics and biopolymers", "Chitosan and bio-composite synthesis", "Lignocellulosic biomass processing", "Circular bio-economy solutions"],
+    description: "Transforming agricultural and industrial bio-waste into high-value functional materials, biodegradable packaging, and sustainable biochemicals to advance circular bio-economy principles.",
     color: "#92400E",
   },
   {
-    icon: "🖥️",
-    title: "Bioinformatics & Computational Biology",
-    areas: ["Genome assembly & annotation", "Phylogenetic analysis", "Structural bioinformatics", "Machine learning in biology", "Drug target prediction"],
-    description: "Integrating computational tools with biological data to extract meaningful insights. Our bioinformatics team supports experimental research with powerful data analysis pipelines.",
+    icon: "🧬",
+    title: "Protein Structure & Enzyme Engineering",
+    areas: ["Protein 3D structure modeling and MD simulation", "Molecular docking and binding site analysis", "Recombinant enzyme expression systems", "Thermostability and catalytic optimization", "Enzyme immobilization techniques"],
+    description: "Employing structural biology and protein engineering to design novel biocatalysts with improved thermal stability, specificity, and catalytic efficiency for industrial and environmental applications.",
+    color: "#1E40AF",
+  },
+  {
+    icon: "💻",
+    title: "Computational Biology & Bioinformatics",
+    areas: ["Metagenomic profiling of bioresources", "Metabolic pathway modeling & flux analysis", "Multi-omics data integration pipelines", "In silico drug and target prediction", "Machine learning in bioprocess modeling"],
+    description: "Integrating powerful computational pipelines with experimental biological data to decode complex molecular networks, predict metabolic fluxes, and guide laboratory strain development.",
     color: "#4C1D95",
   },
 ];
@@ -55,9 +55,9 @@ export default function ResearchPage() {
     <>
       <div className="page-header">
         <div className="container page-header-content">
-          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Science</div>
+          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Science &amp; Innovation</div>
           <h1 className="text-h1">Research Areas</h1>
-          <p>Six major research domains driving our scientific mission.</p>
+          <p>Six specialized research domains driving the mission of BTIB Lab at Jahangirnagar University.</p>
         </div>
       </div>
 

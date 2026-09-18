@@ -225,7 +225,7 @@ model Post {
 
 model LabSettings {
   id          String  @id @default("singleton")
-  labName     String  @default("Biotechnology & Genetic Engineering Lab")
+  labName     String  @default("Bioresources Technology and Industrial Biotechnology Laboratory")
   university  String  @default("Jahangirnagar University")
   tagline     String?
   about       String? @db.Text

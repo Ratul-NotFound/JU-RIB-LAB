@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Explore all research projects at the BGE Lab, Jahangirnagar University.",
+  description: "Explore all research projects at the Bioresources Technology and Industrial Biotechnology Laboratory, Jahangirnagar University.",
 };
 
 async function getProjects(status?: string) {

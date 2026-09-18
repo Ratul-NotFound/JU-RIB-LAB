@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "About the Lab",
-  description: "Learn about the history, vision, mission, and facilities of the BGE Lab at Jahangirnagar University.",
+  description: "Learn about the history, vision, mission, and facilities of the Bioresources Technology and Industrial Biotechnology Laboratory at Jahangirnagar University.",
 };
 
 async function getSettings() {
@@ -49,16 +49,16 @@ export default async function AboutPage() {
                 ) : (
                   <>
                     <p style={{ marginBottom: "var(--space-4)" }}>
-                      The Biotechnology and Genetic Engineering Laboratory at Jahangirnagar University is one of
-                      Bangladesh&apos;s leading research centers dedicated to advancing the frontiers of life sciences.
+                      The Bioresources Technology and Industrial Biotechnology Laboratory at Jahangirnagar University is one of
+                      Bangladesh&apos;s leading research centers dedicated to advancing research in bioresources utilization, bioprocess engineering, and sustainable industrial biotechnology.
                     </p>
                     <p style={{ marginBottom: "var(--space-4)" }}>
                       Our interdisciplinary team of faculty, researchers, and students work together on projects
-                      spanning genomics, molecular biology, agricultural biotechnology, and bioinformatics.
+                      spanning genomics, molecular biology, bioprocesses, and bioinformatics.
                     </p>
                     <p>
-                      We are committed to producing world-class research that addresses real challenges in health,
-                      agriculture, and environmental sustainability.
+                      We are committed to producing world-class research that addresses real challenges in bioresources,
+                      agriculture, health, and environmental sustainability.
                     </p>
                   </>
                 )}
@@ -142,12 +142,12 @@ export default async function AboutPage() {
           </div>
           <div className="grid-3">
             {[
-              { icon: "🧪", title: "Molecular Biology Lab", desc: "PCR machines, gel electrophoresis, and spectrophotometry equipment." },
-              { icon: "🖥️", title: "Bioinformatics Suite", desc: "High-performance computing cluster for genomic data analysis." },
-              { icon: "🔬", title: "Microscopy Center", desc: "Fluorescence, confocal, and electron microscopy facilities." },
-              { icon: "🌡️", title: "Cell Culture Room", desc: "Sterile facilities for mammalian and bacterial cell culture." },
-              { icon: "🧬", title: "Sequencing Unit", desc: "Next-generation DNA sequencing capabilities." },
-              { icon: "📚", title: "Research Library", desc: "Comprehensive collection of journals and research databases." },
+              { icon: "🌿", title: "Photobioreactor & Algae Unit", desc: "State-of-the-art microalgae cultivation systems and 'Liquid-Tree' urban carbon capture prototypes." },
+              { icon: "⚙️", title: "Microbial Fermentation Suite", desc: "Benchtop biofermenters for batch, fed-batch, and solid-state microbial production." },
+              { icon: "🔬", title: "Bioprocess & Separation Lab", desc: "High-speed refrigerated centrifugation, cross-flow filtration, and protein purification units." },
+              { icon: "🧪", title: "Enzyme Engineering Facility", desc: "UV-Vis spectrophotometry, gel electrophoresis, and kinetic biocatalysis workstations." },
+              { icon: "💻", title: "Computational Biology Cluster", desc: "Dedicated workstations for molecular docking, MD simulations, and multi-omics analysis." },
+              { icon: "♻️", title: "Biomaterials Processing Center", desc: "Facilities for agro-waste extraction, biopolymer synthesis, and sustainable bioplastics." },
             ].map((f) => (
               <div key={f.title} className="card card-body">
                 <div style={{ fontSize: "2rem", marginBottom: "var(--space-3)" }}>{f.icon}</div>

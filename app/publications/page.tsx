@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Publications",
-  description: "Research papers, patents, and publications from the BGE Lab.",
+  description: "Research papers, patents, and publications from the Bioresources Technology and Industrial Biotechnology Laboratory.",
 };
 
 async function getPublications(type?: string) {

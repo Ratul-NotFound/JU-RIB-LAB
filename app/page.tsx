@@ -30,21 +30,21 @@ async function getHomeData() {
 }
 
 const RESEARCH_DOMAINS = [
-  { icon: "🧬", title: "Genomics & Sequencing", desc: "Next-generation sequencing, genome assembly, and structural biology." },
-  { icon: "🔬", title: "Molecular Biology", desc: "Gene expression mechanisms, CRISPR editing, and cellular pathways." },
-  { icon: "🌱", title: "Agri-Biotechnology", desc: "Climate-resilient crop genetics and sustainable agricultural solutions." },
-  { icon: "💊", title: "Biopharmaceuticals", desc: "Therapeutic proteins, diagnostic markers, and vaccine development." },
-  { icon: "🦠", title: "Microbial Biotech", desc: "Industrial fermentation, antimicrobial discovery, and bio-remediation." },
-  { icon: "💻", title: "Bioinformatics", desc: "Computational genomics, predictive modeling, and biological data pipelines." },
+  { icon: "🦠", title: "Microbial Biotechnology", desc: "Industrial fermentation, enzyme synthesis, and beneficial microbe utilization." },
+  { icon: "⚙️", title: "Bioprocess Engineering", desc: "Bioreactor optimization, bio-separation, and scalable green biomanufacturing." },
+  { icon: "🌿", title: "Algae Biotechnology", desc: "Microalgae cultivation, urban carbon capture ('Liquid-Tree'), and biofuel precursors." },
+  { icon: "♻️", title: "Biomaterial Processing", desc: "Valorization of agro-industrial waste into bioplastics, biochar, and value-added biochemicals." },
+  { icon: "🧬", title: "Protein Structure & Engineering", desc: "Structural characterization, molecular docking, and industrial enzyme engineering." },
+  { icon: "💻", title: "Computational Biology", desc: "Genomics, multi-omics data integration, and predictive biological modeling." },
 ];
 
 export default async function HomePage() {
   const { settings, featuredProjects, recentPosts, stats } = await getHomeData();
   const [projectCount, pubCount, memberCount, postCount] = stats;
 
-  const labName = settings?.labName ?? "Biotechnology & Genetic Engineering Lab";
+  const labName = settings?.labName ?? "Bioresources Technology and Industrial Biotechnology Laboratory";
   const university = settings?.university ?? "Jahangirnagar University";
-  const tagline = settings?.tagline ?? "Advancing life sciences through discovery, innovation, and cutting-edge research.";
+  const tagline = settings?.tagline ?? "Advancing bioresources utilization, bioprocess engineering, and sustainable industrial biotechnology.";
 
   return (
     <>
@@ -246,7 +246,7 @@ export default async function HomePage() {
         <div className="container">
           <div className="split-2-col">
             <div>
-              <div className="section-eyebrow" style={{ color: "var(--color-accent)" }}>Why BGE Lab</div>
+              <div className="section-eyebrow" style={{ color: "var(--color-accent)" }}>Why BTIB Lab</div>
               <h2 style={{ color: "white", fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, marginBottom: "var(--space-5)" }}>
                 Excellence in Scientific Training &amp; Research
               </h2>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Activities & Events",
-  description: "Seminars, workshops, and events at the BGE Lab.",
+  description: "Seminars, workshops, and events at the Bioresources Technology and Industrial Biotechnology Laboratory.",
 };
 
 async function getActivities() {

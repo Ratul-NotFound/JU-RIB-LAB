@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Read articles, insights, and updates from the BGE Lab team.",
+  description: "Read articles, insights, and updates from the BTIB Lab team.",
 };
 
 async function getPosts(tag?: string) {

@@ -39,12 +39,11 @@ export function Footer() {
               >
                 🧬
               </div>
-              <div className="footer-logo-name">BGE Lab</div>
+              <div className="footer-logo-name">BTIB Lab</div>
             </div>
             <p className="footer-desc">
-              The Biotechnology &amp; Genetic Engineering Laboratory at Jahangirnagar University is
-              committed to cutting-edge research in molecular biology, genomics, and applied biotechnology
-              for a sustainable future.
+              The Bioresources Technology and Industrial Biotechnology Laboratory at Jahangirnagar University is
+              committed to cutting-edge research in bioresources utilization, bioprocess engineering, and sustainable industrial biotechnology.
             </p>
             <div className="social-links">
               <a href="#" className="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
@@ -109,7 +108,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <p>© {currentYear} Biotechnology &amp; Genetic Engineering Lab, Jahangirnagar University. All rights reserved.</p>
+          <p>© {currentYear} Bioresources Technology and Industrial Biotechnology Laboratory, Jahangirnagar University. All rights reserved.</p>
           <p>Built with 💚 for science</p>
         </div>
       </div>

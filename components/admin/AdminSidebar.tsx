@@ -49,7 +49,7 @@ export function AdminSidebar({ user }: { user: any }) {
       <div className="admin-mobile-bar">
         <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
           <span style={{ fontSize: "1.2rem" }}>🧬</span>
-          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "0.95rem" }}>BGE Admin</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "0.95rem" }}>BTIB Admin</span>
         </div>
         <button
           onClick={() => setOpen(!open)}
@@ -73,7 +73,7 @@ export function AdminSidebar({ user }: { user: any }) {
         <div className="sidebar-logo">
           <div className="sidebar-logo-icon">🧬</div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.9rem" }}>BGE Lab Admin</div>
+            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "0.9rem" }}>BTIB Lab Admin</div>
             <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.4)" }}>Management Panel</div>
           </div>
           <button

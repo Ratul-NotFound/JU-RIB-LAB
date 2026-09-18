@@ -7,23 +7,25 @@ import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: {
-    default: "Biotechnology & Genetic Engineering Lab | Jahangirnagar University",
-    template: "%s | BGE Lab — JU",
+    default: "Bioresources Technology and Industrial Biotechnology Laboratory | Jahangirnagar University",
+    template: "%s | BTIB Lab — JU",
   },
   description:
-    "Official website of the Biotechnology and Genetic Engineering Laboratory at Jahangirnagar University. Explore our research, projects, publications, and team.",
+    "Official website of the Bioresources Technology and Industrial Biotechnology Laboratory at Jahangirnagar University. Explore our research, projects, publications, and team.",
   keywords: [
+    "bioresources technology",
+    "industrial biotechnology",
     "biotechnology",
     "genetic engineering",
     "Jahangirnagar University",
     "research lab",
-    "molecular biology",
+    "bioprocessing",
     "genomics",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "BGE Lab — JU",
+    siteName: "BTIB Lab — Jahangirnagar University",
   },
 };
 

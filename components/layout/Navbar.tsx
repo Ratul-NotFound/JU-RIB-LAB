@@ -54,11 +54,11 @@ export function Navbar() {
       >
         <div className="container navbar-inner">
           {/* Logo */}
-          <Link href="/" className="nav-logo" aria-label="BGE Lab Home">
+          <Link href="/" className="nav-logo" aria-label="Bioresources Technology and Industrial Biotechnology Laboratory Home">
             <div className="nav-logo-icon">🧬</div>
             <div className="nav-logo-text">
-              <span className="nav-logo-name">BGE Lab</span>
-              <span className="nav-logo-sub">Jahangirnagar University</span>
+              <span className="nav-logo-name">BTIB Lab</span>
+              <span className="nav-logo-sub">Bioresources &amp; Industrial Biotech · JU</span>
             </div>
           </Link>
 

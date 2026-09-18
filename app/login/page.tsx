@@ -80,7 +80,7 @@ export default function LoginPage() {
             🧬
           </div>
           <h1 style={{ fontSize: "1.5rem", fontFamily: "var(--font-heading)", fontWeight: 800, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>
-            Sign In to BGE Lab
+            Sign In to BTIB Lab
           </h1>
           <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)" }}>
             Welcome back! Please enter your credentials.
