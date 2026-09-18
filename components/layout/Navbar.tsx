@@ -48,23 +48,23 @@ export function Navbar() {
   return (
     <>
       {/* Top Institutional Affiliation Header Bar */}
-      <div style={{
+      <div className="top-institution-bar" style={{
         background: "#090D16",
         color: "#94A3B8",
         fontSize: "0.75rem",
         borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
-        padding: "5px 0",
+        padding: "6px 0",
         position: "relative",
         zIndex: 101,
       }}>
-        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", letterSpacing: "0.03em" }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "6px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px", letterSpacing: "0.02em" }}>
             <span style={{ fontWeight: 700, color: "#E2E8F0" }}>Jahangirnagar University</span>
-            <span>·</span>
-            <span>Department of Biotechnology &amp; Genetic Engineering</span>
+            <span className="hide-mobile">·</span>
+            <span className="hide-mobile">Dept. of Biotechnology &amp; Genetic Engineering</span>
           </div>
-          <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-            <span>Savar, Dhaka-1342, Bangladesh</span>
+          <div className="hide-mobile" style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <span>Savar, Dhaka-1342</span>
             <span>·</span>
             <a href="mailto:bge@juniv.edu" style={{ color: "#34D399", textDecoration: "none" }}>bge@juniv.edu</a>
           </div>

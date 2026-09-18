@@ -1569,3 +1569,16 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: var(--space-6);
   }
 }
+
+.hide-mobile {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  .show-mobile {
+    display: block !important;
+  }
+}
