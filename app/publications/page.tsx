@@ -28,8 +28,8 @@ const TYPE_COLORS: Record<string, string> = {
   OTHER: "badge-neutral",
 };
 
-export default async function PublicationsPage({ searchParams }: { searchParams: { type?: string } }) {
-  const type = searchParams.type;
+export default async function PublicationsPage({ searchParams }: { searchParams: Promise<{ type?: string }> }) {
+  const { type } = await searchParams;
   const publications = await getPublications(type);
 
   return (

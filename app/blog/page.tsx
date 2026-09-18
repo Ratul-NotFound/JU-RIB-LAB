@@ -22,8 +22,8 @@ async function getPosts(tag?: string) {
   }
 }
 
-export default async function BlogPage({ searchParams }: { searchParams: { tag?: string } }) {
-  const tag = searchParams.tag;
+export default async function BlogPage({ searchParams }: { searchParams: Promise<{ tag?: string }> }) {
+  const { tag } = await searchParams;
   const posts = await getPosts(tag);
 
   return (

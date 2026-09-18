@@ -28,8 +28,8 @@ const STATUS_COLORS: Record<string, string> = {
   PAUSED: "badge-neutral",
 };
 
-export default async function ProjectsPage({ searchParams }: { searchParams: { status?: string } }) {
-  const status = searchParams.status;
+export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
+  const { status } = await searchParams;
   const projects = await getProjects(status);
 
   return (
