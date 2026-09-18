@@ -147,7 +147,7 @@ export default function AdminProjectsPage() {
                   <label className="form-label">Description *</label>
                   <textarea required className="form-textarea" placeholder="Brief description of the project…" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} />
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Status</label>
                     <select className="form-select" value={form.status} onChange={e => setForm({ ...form, status: e.target.value })}>

@@ -91,13 +91,13 @@ export default function AdminPublicationsPage() {
               <div className="modal-body" style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
                 <div className="form-group"><label className="form-label">Title *</label><input required className="form-input" value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} /></div>
                 <div className="form-group"><label className="form-label">Authors * (e.g. Smith J, Doe A)</label><input required className="form-input" value={form.authors} onChange={e => setForm({ ...form, authors: e.target.value })} /></div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "var(--space-3)" }}>
+                <div className="grid-form-3">
                   <div className="form-group"><label className="form-label">Year *</label><input required type="number" className="form-input" value={form.year} onChange={e => setForm({ ...form, year: e.target.value })} /></div>
                   <div className="form-group"><label className="form-label">Type</label><select className="form-select" value={form.type} onChange={e => setForm({ ...form, type: e.target.value })}><option value="JOURNAL">Journal</option><option value="CONFERENCE">Conference</option><option value="BOOK_CHAPTER">Book Chapter</option><option value="PATENT">Patent</option><option value="THESIS">Thesis</option><option value="OTHER">Other</option></select></div>
                   <div className="form-group"><label className="form-label">Citations</label><input type="number" className="form-input" value={form.citationCount} onChange={e => setForm({ ...form, citationCount: e.target.value })} /></div>
                 </div>
                 <div className="form-group"><label className="form-label">Journal / Conference Name</label><input className="form-input" value={form.journal} onChange={e => setForm({ ...form, journal: e.target.value })} /></div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-3)" }}>
+                <div className="grid-form-2">
                   <div className="form-group"><label className="form-label">DOI</label><input className="form-input" placeholder="10.xxxx/xxxxx" value={form.doi} onChange={e => setForm({ ...form, doi: e.target.value })} /></div>
                   <div className="form-group"><label className="form-label">PDF URL</label><input className="form-input" placeholder="https://…" value={form.pdfUrl} onChange={e => setForm({ ...form, pdfUrl: e.target.value })} /></div>
                 </div>

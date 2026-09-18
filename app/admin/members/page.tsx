@@ -285,7 +285,7 @@ export default function AdminMembersPage() {
             </div>
             <form onSubmit={handleSave}>
               <div className="modal-body" style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Full Name *</label>
                     <input
@@ -310,7 +310,7 @@ export default function AdminMembersPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Role</label>
                     <select
@@ -335,7 +335,7 @@ export default function AdminMembersPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Designation / Title</label>
                     <input
@@ -367,7 +367,7 @@ export default function AdminMembersPage() {
                   />
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Avatar Image URL</label>
                     <input
@@ -388,7 +388,7 @@ export default function AdminMembersPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">Google Scholar Profile URL</label>
                     <input
@@ -409,7 +409,7 @@ export default function AdminMembersPage() {
                   </div>
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--space-4)" }}>
+                <div className="grid-form-2">
                   <div className="form-group">
                     <label className="form-label">LinkedIn URL</label>
                     <input
