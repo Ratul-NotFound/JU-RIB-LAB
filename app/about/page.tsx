@@ -116,32 +116,17 @@ export default async function AboutPage() {
             <div className="section-eyebrow">Our Journey</div>
             <h2 className="section-title">Key Milestones</h2>
           </div>
-          <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-            <div style={{
-              position: "absolute", left: "50%", top: 0, bottom: 0,
-              width: 2, background: "var(--color-border)", transform: "translateX(-50%)",
-            }} />
+          <div className="timeline-container">
+            <div className="timeline-line" />
             {MILESTONES.map((m, i) => (
-              <div key={m.year} style={{
-                display: "flex",
-                flexDirection: i % 2 === 0 ? "row" : "row-reverse",
-                gap: "var(--space-8)",
-                marginBottom: "var(--space-8)",
-                alignItems: "center",
-              }}>
-                <div style={{ flex: 1, textAlign: i % 2 === 0 ? "right" : "left" }}>
+              <div key={m.year} className={`timeline-item ${i % 2 === 0 ? "even" : "odd"}`}>
+                <div className="timeline-content">
                   <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "1.5rem", color: "var(--color-accent)" }}>{m.year}</div>
                   <div style={{ fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>{m.title}</div>
                   <div style={{ fontSize: "0.875rem", color: "var(--color-text-muted)" }}>{m.desc}</div>
                 </div>
-                <div style={{
-                  width: 16, height: 16, borderRadius: "50%",
-                  background: "var(--color-accent)",
-                  border: "3px solid var(--color-surface)",
-                  boxShadow: "0 0 0 3px var(--color-accent)",
-                  flexShrink: 0, zIndex: 1,
-                }} />
-                <div style={{ flex: 1 }} />
+                <div className="timeline-dot" />
+                <div className="timeline-spacer" />
               </div>
             ))}
           </div>

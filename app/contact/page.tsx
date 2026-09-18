@@ -105,7 +105,7 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
-                  <div className="grid-2" style={{ gap: "var(--space-4)" }}>
+                  <div className="grid-form-2">
                     <div className="form-group">
                       <label htmlFor="name" className="form-label">Full Name *</label>
                       <input id="name" name="name" type="text" required className="form-input"

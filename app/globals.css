@@ -1285,6 +1285,76 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 2fr 1fr;
 }
 
+.hero-mini-stats {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════════════ */
+.timeline-container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  align-items: center;
+}
+
+.timeline-item.even {
+  flex-direction: row;
+}
+
+.timeline-item.odd {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-item.even .timeline-content {
+  text-align: right;
+}
+
+.timeline-item.odd .timeline-content {
+  text-align: left;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 0 0 3px var(--color-accent);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-spacer {
+  flex: 1;
+}
+
 .admin-mobile-bar {
   display: none;
   background: var(--color-secondary);
@@ -1391,6 +1461,31 @@ h1, h2, h3, h4, h5, h6 {
   .hero-content {
     padding: var(--space-16) 0 var(--space-12);
   }
+  .timeline-container {
+    padding-left: var(--space-8);
+  }
+  .timeline-line {
+    left: 8px;
+    transform: none;
+  }
+  .timeline-item,
+  .timeline-item.even,
+  .timeline-item.odd {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .timeline-item.even .timeline-content,
+  .timeline-item.odd .timeline-content {
+    text-align: left;
+  }
+  .timeline-dot {
+    margin-top: 6px;
+    margin-left: -24px;
+  }
+  .timeline-spacer {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1400,5 +1495,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
     width: 100%;
     justify-content: center;
+  }
+  .hero-mini-stats {
+    gap: var(--space-5);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
   }
 }
