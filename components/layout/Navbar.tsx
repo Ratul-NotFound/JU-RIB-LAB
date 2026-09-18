@@ -72,7 +72,7 @@ export function Navbar() {
       </div>
 
       <nav
-        className={`navbar ${isTransparent ? "navbar-transparent" : "navbar-solid"}`}
+        className="navbar navbar-solid"
         style={{ top: "auto", position: "sticky" }}
         role="navigation"
         aria-label="Main navigation"
@@ -87,18 +87,18 @@ export function Navbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              width: 36,
-              height: 36,
+              width: 38,
+              height: 38,
               fontWeight: 800,
-              fontSize: "0.75rem",
+              fontSize: "0.8rem",
               letterSpacing: "0.05em",
               fontFamily: "var(--font-mono)",
             }}>
               JU
             </div>
             <div className="nav-logo-text">
-              <span className="nav-logo-name" style={{ letterSpacing: "-0.01em", fontWeight: 700 }}>BTIB Laboratory</span>
-              <span className="nav-logo-sub" style={{ fontSize: "0.68rem" }}>Department of Biotechnology &amp; Genetic Engineering</span>
+              <span className="nav-logo-name" style={{ letterSpacing: "-0.01em", fontWeight: 800, color: "var(--color-secondary)" }}>BTIB Laboratory</span>
+              <span className="nav-logo-sub" style={{ fontSize: "0.7rem", color: "var(--color-text-muted)" }}>Department of Biotechnology &amp; Genetic Engineering</span>
             </div>
           </Link>
 
@@ -111,9 +111,11 @@ export function Navbar() {
                   className={`nav-link ${pathname === link.href ? "active" : ""}`}
                   style={{
                     fontWeight: pathname === link.href ? 700 : 500,
+                    color: pathname === link.href ? "var(--color-primary)" : "var(--color-text-2)",
                     borderBottom: pathname === link.href ? "2px solid var(--color-primary)" : "2px solid transparent",
                     borderRadius: 0,
-                    padding: "8px 12px",
+                    padding: "10px 14px",
+                    fontSize: "0.875rem",
                   }}
                 >
                   {link.label}
