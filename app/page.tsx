@@ -50,7 +50,14 @@ export default async function HomePage() {
     <>
       {/* ── 1. HERO SECTION ────────────────────────── */}
       <section className="hero" id="hero">
-        <div className="hero-bg-pattern" />
+        {/* Full-Screen Realistic Background Laboratory Image */}
+        <div className="hero-bg-media">
+          <img
+            src="/images/hero-lab.jpg"
+            alt="Bioresources Technology and Industrial Biotechnology Laboratory"
+          />
+        </div>
+        <div className="hero-bg-overlay" />
         <div className="hero-grid" />
 
         {/* Ambient background glow */}
@@ -60,6 +67,7 @@ export default async function HomePage() {
           background: "radial-gradient(circle, rgba(0,200,150,0.18) 0%, transparent 70%)",
           borderRadius: "50%", animation: "float 8s ease-in-out infinite",
           pointerEvents: "none",
+          zIndex: 1,
         }} />
         <div style={{
           position: "absolute", bottom: "15%", left: "5%",
@@ -67,65 +75,171 @@ export default async function HomePage() {
           background: "radial-gradient(circle, rgba(10,79,60,0.25) 0%, transparent 70%)",
           borderRadius: "50%", animation: "float 10s ease-in-out infinite reverse",
           pointerEvents: "none",
+          zIndex: 1,
         }} />
 
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="hero-content" style={{ maxWidth: 780 }}>
-            {/* Pill Badge */}
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: "8px",
-              background: "rgba(0,200,150,0.12)", border: "1px solid rgba(0,200,150,0.25)",
-              borderRadius: "999px", padding: "6px 16px",
-              fontSize: "0.8rem", fontWeight: 600, color: "var(--color-accent)",
-              marginBottom: "var(--space-6)", letterSpacing: "0.04em", textTransform: "uppercase",
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", display: "inline-block", animation: "pulse-dot 2s ease infinite" }} />
-              {university} · Department of BGE
-            </div>
-
-            {/* Display Headline */}
-            <h1 className="text-display" style={{ color: "white", marginBottom: "var(--space-5)", letterSpacing: "-0.02em" }}>
-              {labName}
-            </h1>
-
-            {/* Subheading */}
-            <p style={{
-              color: "rgba(255,255,255,0.8)", fontSize: "1.15rem",
-              lineHeight: 1.7, marginBottom: "var(--space-8)", maxWidth: 620,
-            }}>
-              {tagline}
-            </p>
-
-            {/* Action Buttons */}
-            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", alignItems: "center" }}>
-              <Link href="/research" className="btn btn-accent btn-lg">
-                Explore Research Areas →
-              </Link>
-              <Link href="/members" className="btn btn-lg" style={{
-                background: "rgba(255,255,255,0.1)",
-                border: "1.5px solid rgba(255,255,255,0.25)",
-                color: "white",
+          <div className="split-2-col" style={{ alignItems: "center", gap: "var(--space-12)" }}>
+            <div className="hero-content" style={{ maxWidth: 660 }}>
+              {/* Pill Badge */}
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                background: "rgba(0,200,150,0.15)", border: "1px solid rgba(0,200,150,0.35)",
+                backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+                borderRadius: "999px", padding: "6px 16px",
+                fontSize: "0.8rem", fontWeight: 600, color: "var(--color-accent)",
+                marginBottom: "var(--space-6)", letterSpacing: "0.04em", textTransform: "uppercase",
               }}>
-                Meet Our Team
-              </Link>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", display: "inline-block", animation: "pulse-dot 2s ease infinite" }} />
+                {university} · Department of BGE
+              </div>
+
+              {/* Display Headline */}
+              <h1 className="text-display" style={{ color: "#ffffff", marginBottom: "var(--space-5)", letterSpacing: "-0.02em", textShadow: "0 2px 20px rgba(0,0,0,0.6)" }}>
+                {labName}
+              </h1>
+
+              {/* Subheading */}
+              <p style={{
+                color: "rgba(255,255,255,0.9)", fontSize: "1.125rem",
+                lineHeight: 1.75, marginBottom: "var(--space-8)", maxWidth: 580,
+                textShadow: "0 1px 12px rgba(0,0,0,0.5)",
+              }}>
+                {tagline}
+              </p>
+
+              {/* Action Buttons */}
+              <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", alignItems: "center" }}>
+                <Link href="/research" className="btn btn-accent btn-lg" style={{ boxShadow: "0 8px 24px rgba(0, 200, 150, 0.4)" }}>
+                  Explore Research Areas →
+                </Link>
+                <Link href="/members" className="btn btn-lg" style={{
+                  background: "rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  border: "1.5px solid rgba(255,255,255,0.3)",
+                  color: "white",
+                }}>
+                  Meet Our Team
+                </Link>
+              </div>
+
+              {/* Mini Stats */}
+              <div className="hero-mini-stats">
+                {[
+                  { n: `${projectCount || 20}+`, label: "Active Projects" },
+                  { n: `${pubCount || 50}+`, label: "Publications" },
+                  { n: `${memberCount || 30}+`, label: "Researchers" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <div style={{ fontSize: "1.8rem", fontWeight: 800, fontFamily: "var(--font-heading)", color: "var(--color-accent)", lineHeight: 1.1 }}>
+                      {s.n}
+                    </div>
+                    <div style={{ fontSize: "0.825rem", color: "rgba(255,255,255,0.75)", fontWeight: 500, marginTop: 4 }}>
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Mini Stats */}
-            <div className="hero-mini-stats">
-              {[
-                { n: `${projectCount || 20}+`, label: "Active Projects" },
-                { n: `${pubCount || 50}+`, label: "Publications" },
-                { n: `${memberCount || 30}+`, label: "Researchers" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div style={{ fontSize: "1.8rem", fontWeight: 800, fontFamily: "var(--font-heading)", color: "var(--color-accent)", lineHeight: 1.1 }}>
-                    {s.n}
-                  </div>
-                  <div style={{ fontSize: "0.825rem", color: "rgba(255,255,255,0.6)", fontWeight: 500, marginTop: 4 }}>
-                    {s.label}
-                  </div>
+            {/* Right: Glassmorphic Showcase Cards with Realistic Lab Previews */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+              {/* Card 1: Liquid-Tree Innovation */}
+              <div style={{
+                background: "rgba(10, 26, 47, 0.72)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                borderRadius: "var(--radius-2xl)",
+                padding: "var(--space-5)",
+                display: "flex",
+                gap: "var(--space-4)",
+                alignItems: "center",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+              }}>
+                <div style={{
+                  width: 84,
+                  height: 84,
+                  borderRadius: "var(--radius-xl)",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  border: "1px solid rgba(255,255,255,0.2)",
+                }}>
+                  <img
+                    src="/images/liquid-tree.jpg"
+                    alt="Liquid Tree Algae Photobioreactor"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
                 </div>
-              ))}
+                <div>
+                  <div style={{
+                    display: "inline-block",
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    color: "var(--color-accent)",
+                    marginBottom: 2,
+                  }}>
+                    Flagship Innovation
+                  </div>
+                  <h3 style={{ color: "#ffffff", fontSize: "1.025rem", fontWeight: 700, margin: 0 }}>
+                    Liquid-Tree Photobioreactor
+                  </h3>
+                  <p style={{ color: "rgba(255, 255, 255, 0.75)", fontSize: "0.8rem", margin: "4px 0 0 0", lineHeight: 1.4 }}>
+                    Urban microalgae biological CO₂ capture &amp; atmospheric purification.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 2: Fermentation & Industrial Bioprocess */}
+              <div style={{
+                background: "rgba(10, 26, 47, 0.72)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.18)",
+                borderRadius: "var(--radius-2xl)",
+                padding: "var(--space-5)",
+                display: "flex",
+                gap: "var(--space-4)",
+                alignItems: "center",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+              }}>
+                <div style={{
+                  width: 84,
+                  height: 84,
+                  borderRadius: "var(--radius-xl)",
+                  overflow: "hidden",
+                  flexShrink: 0,
+                  border: "1px solid rgba(255,255,255,0.2)",
+                }}>
+                  <img
+                    src="/images/fermentation.jpg"
+                    alt="Industrial Bioprocess Fermentation"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+                <div>
+                  <div style={{
+                    display: "inline-block",
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    color: "var(--color-accent)",
+                    marginBottom: 2,
+                  }}>
+                    Industrial Bioprocess
+                  </div>
+                  <h3 style={{ color: "#ffffff", fontSize: "1.025rem", fontWeight: 700, margin: 0 }}>
+                    Enzyme &amp; Biofuel Fermentation
+                  </h3>
+                  <p style={{ color: "rgba(255, 255, 255, 0.75)", fontSize: "0.8rem", margin: "4px 0 0 0", lineHeight: 1.4 }}>
+                    Solid-state &amp; submerged bio-production of industrial enzymes.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -207,9 +321,16 @@ export default async function HomePage() {
               {featuredProjects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.slug}`} style={{ textDecoration: "none" }}>
                   <div className="project-card" style={{ height: "100%" }}>
-                    <div className="project-card-img-placeholder" style={{ height: 160, fontSize: "2.5rem" }}>
-                      🧬
-                    </div>
+                    <img
+                      src={
+                        project.thumbnailUrl ||
+                        (project.slug.includes("algae") || project.slug.includes("liquid-tree")
+                          ? "/images/liquid-tree.jpg"
+                          : "/images/fermentation.jpg")
+                      }
+                      alt={project.title}
+                      className="project-card-img"
+                    />
                     <div className="project-card-body">
                       <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
                         <span className={`badge badge-${project.status === "ONGOING" ? "success" : project.status === "COMPLETED" ? "info" : "warning"}`}>

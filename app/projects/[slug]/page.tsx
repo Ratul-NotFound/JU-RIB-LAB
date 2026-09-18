@@ -105,6 +105,22 @@ export default async function ProjectDetailPage({
           <div className="split-content-sidebar">
             {/* Main content */}
             <div>
+              <div style={{
+                position: "relative",
+                borderRadius: "var(--radius-xl)",
+                overflow: "hidden",
+                marginBottom: "var(--space-8)",
+                maxHeight: 360,
+                border: "1px solid var(--color-border)",
+                boxShadow: "var(--shadow-md)"
+              }}>
+                <img
+                  src={project.coverImageUrl || (project.slug?.includes("liquid-tree") || project.slug?.includes("algae") ? "/images/liquid-tree.jpg" : project.slug?.includes("ferment") || project.slug?.includes("enzyme") ? "/images/fermentation.jpg" : "/images/hero-lab.jpg")}
+                  alt={project.title}
+                  style={{ width: "100%", height: 320, objectFit: "cover", display: "block" }}
+                />
+              </div>
+
               {project.content ? (
                 <div
                   className="prose"

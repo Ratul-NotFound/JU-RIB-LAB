@@ -176,6 +176,100 @@ async function main() {
     },
   });
 
+  // Authentic Publications
+  await prisma.publication.upsert({
+    where: { id: "pub-hfcs-2024" },
+    update: {},
+    create: {
+      id: "pub-hfcs-2024",
+      title: "Construction and investigation of multi-enzyme immobilized matrix for the production of HFCS",
+      authors: "Prof. Dr. Mohammad Shahedur Rahman, Prof. Dr. Umme Salma Zohora, et al.",
+      journal: "PLOS ONE",
+      year: 2024,
+      doi: "10.1371/journal.pone.0298124",
+      abstract: "This study demonstrates the construction of a multi-enzyme co-immobilized biocatalytic matrix for the continuous and sustainable enzymatic production of High-Fructose Corn Syrup (HFCS).",
+      type: "JOURNAL",
+      isFeatured: true,
+      createdBy: profShahedur.id,
+    },
+  });
+
+  await prisma.publication.upsert({
+    where: { id: "pub-biofilm-2022" },
+    update: {},
+    create: {
+      id: "pub-biofilm-2022",
+      title: "Biofilm Fermentation: A Propitious Method for the Production of Protease Enzyme by Bacillus subtilis",
+      authors: "Prof. Dr. Umme Salma Zohora, Prof. Dr. Mohammad Shahedur Rahman, et al.",
+      journal: "Industrial Biotechnology",
+      year: 2022,
+      doi: "10.1089/ind.2022.0014",
+      abstract: "Investigation of structured biofilm fermentation systems to enhance volumetric yield and operational stability in bacterial protease production.",
+      type: "JOURNAL",
+      isFeatured: true,
+      createdBy: profZohora.id,
+    },
+  });
+
+  await prisma.publication.upsert({
+    where: { id: "pub-iturin-okara" },
+    update: {},
+    create: {
+      id: "pub-iturin-okara",
+      title: "Production of iturin A through glass column reactor (GCR) from soybean curd residue (okara) by Bacillus subtilis under solid state fermentation",
+      authors: "Prof. Dr. Umme Salma Zohora, Prof. Dr. Mohammad Shahedur Rahman, et al.",
+      journal: "Advances in Bioscience and Biotechnology",
+      year: 2021,
+      abstract: "Solid-state bioconversion of agro-industrial okara byproduct into antifungal lipopeptide iturin A using an aerated glass column bioreactor.",
+      type: "JOURNAL",
+      isFeatured: true,
+      createdBy: profZohora.id,
+    },
+  });
+
+  // Authentic Activities & Events
+  await prisma.activity.upsert({
+    where: { slug: "seminar-cell-penetrating-peptides-wmsrc" },
+    update: {},
+    create: {
+      slug: "seminar-cell-penetrating-peptides-wmsrc",
+      title: "Elementary Processes of Cell-Penetrating Peptides in Single Vesicles and E. coli Cells",
+      description: "Specialized departmental seminar focusing on single-GUV biophysical methods to analyze peptide entry mechanisms across lipid bilayers.",
+      eventDate: new Date("2026-08-20T10:00:00Z"),
+      location: "Wazed Miah Science Research Centre (WMSRC), JU",
+      type: "SEMINAR",
+      createdBy: drZahid.id,
+    },
+  });
+
+  await prisma.activity.upsert({
+    where: { slug: "seminar-biotech-transforms-food-systems" },
+    update: {},
+    create: {
+      slug: "seminar-biotech-transforms-food-systems",
+      title: "How Biotechnology Transforms Bangladesh's Food Systems and Bioeconomy",
+      description: "Interactive symposium exploring bioresource utilization, fermentation innovations, and sustainable food supply chains.",
+      eventDate: new Date("2026-09-05T11:00:00Z"),
+      location: "Department of BGE Seminar Hall, Jahangirnagar University",
+      type: "SEMINAR",
+      createdBy: profShahedur.id,
+    },
+  });
+
+  await prisma.activity.upsert({
+    where: { slug: "workshop-intellectual-property-biotech" },
+    update: {},
+    create: {
+      slug: "workshop-intellectual-property-biotech",
+      title: "Empowering Academia through Intellectual Property and Patenting in Biotechnology",
+      description: "University-wide workshop covering patent filing, technology transfer, and commercialization strategies for biotechnology researchers.",
+      eventDate: new Date("2026-07-15T09:30:00Z"),
+      location: "Wazed Miah Science Research Centre Auditorium, JU",
+      type: "WORKSHOP",
+      createdBy: profShahedur.id,
+    },
+  });
+
   console.log("✅ Seed complete!");
   console.log("");
   console.log("📧 Admin email:    admin@btiblab.ju.edu");

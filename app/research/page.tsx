@@ -9,6 +9,7 @@ const RESEARCH_THEMES = [
   {
     icon: "🦠",
     title: "Microbial Biotechnology",
+    image: "/images/hero-lab.jpg",
     areas: ["Industrial enzyme production (amylases, proteases, cellulases)", "Fermentation technology & optimization", "Microbial secondary metabolites", "Probiotics and functional cultures", "Antimicrobial compound screening"],
     description: "Our microbial biotechnology research investigates beneficial bacterial and fungal strains to develop scalable bio-based production platforms for high-value enzymes, pharmaceuticals, and industrial biochemicals.",
     color: "#0A4F3C",
@@ -16,6 +17,7 @@ const RESEARCH_THEMES = [
   {
     icon: "⚙️",
     title: "Bioprocess Engineering",
+    image: "/images/fermentation.jpg",
     areas: ["Bioreactor design & operation", "Upstream & downstream bioprocess optimization", "Bio-separation and membrane filtration", "Submerged and solid-state fermentation", "Process scale-up and techno-economics"],
     description: "Bridging laboratory discoveries and commercial applications through advanced bioprocess engineering. We optimize cultivation conditions, mass transfer, and yield efficiency for green industrial biomanufacturing.",
     color: "#1A1A2E",
@@ -23,6 +25,7 @@ const RESEARCH_THEMES = [
   {
     icon: "🌿",
     title: "Algae Biotechnology & Carbon Capture",
+    image: "/images/liquid-tree.jpg",
     areas: ["'Liquid-Tree' urban photobioreactor innovation", "High-density microalgae mass cultivation", "Biological CO2 capture and air purification", "Biofuel and lipid feedstock synthesis", "Wastewater phytoremediation"],
     description: "Pioneering microalgal technology for environmental sustainability. Our flagship 'Liquid-Tree' photobioreactor initiative utilizes microalgae to capture atmospheric carbon dioxide and generate clean oxygen in urban environments.",
     color: "#065F46",
@@ -30,6 +33,7 @@ const RESEARCH_THEMES = [
   {
     icon: "♻️",
     title: "Biomaterial Processing & Waste Valorization",
+    image: "/images/fermentation.jpg",
     areas: ["Agro-industrial residue valorization", "Biodegradable bioplastics and biopolymers", "Chitosan and bio-composite synthesis", "Lignocellulosic biomass processing", "Circular bio-economy solutions"],
     description: "Transforming agricultural and industrial bio-waste into high-value functional materials, biodegradable packaging, and sustainable biochemicals to advance circular bio-economy principles.",
     color: "#92400E",
@@ -37,6 +41,7 @@ const RESEARCH_THEMES = [
   {
     icon: "🧬",
     title: "Protein Structure & Enzyme Engineering",
+    image: "/images/hero-lab.jpg",
     areas: ["Protein 3D structure modeling and MD simulation", "Molecular docking and binding site analysis", "Recombinant enzyme expression systems", "Thermostability and catalytic optimization", "Enzyme immobilization techniques"],
     description: "Employing structural biology and protein engineering to design novel biocatalysts with improved thermal stability, specificity, and catalytic efficiency for industrial and environmental applications.",
     color: "#1E40AF",
@@ -44,6 +49,7 @@ const RESEARCH_THEMES = [
   {
     icon: "💻",
     title: "Computational Biology & Bioinformatics",
+    image: "/images/hero-lab.jpg",
     areas: ["Metagenomic profiling of bioresources", "Metabolic pathway modeling & flux analysis", "Multi-omics data integration pipelines", "In silico drug and target prediction", "Machine learning in bioprocess modeling"],
     description: "Integrating powerful computational pipelines with experimental biological data to decode complex molecular networks, predict metabolic fluxes, and guide laboratory strain development.",
     color: "#4C1D95",
@@ -86,22 +92,62 @@ export default function ResearchPage() {
                   </div>
                 )}
                 <div style={{
-                  background: `linear-gradient(135deg, ${theme.color}, ${theme.color}cc)`,
+                  position: "relative",
                   borderRadius: "var(--radius-2xl)",
-                  padding: "var(--space-10)",
-                  textAlign: "center",
-                  color: "white",
+                  overflow: "hidden",
                   minHeight: 280,
+                  boxShadow: "var(--shadow-lg)",
+                  border: "1px solid var(--color-border)",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "var(--space-4)",
+                  justifyContent: "flex-end",
                 }}>
-                  <div style={{ fontSize: "4rem" }}>{theme.icon}</div>
-                  <div style={{ fontSize: "1.1rem", fontWeight: 700, fontFamily: "var(--font-heading)" }}>{theme.title}</div>
-                  <div style={{ width: 40, height: 3, background: "rgba(255,255,255,0.4)", borderRadius: 2 }} />
-                  <div style={{ fontSize: "0.85rem", opacity: 0.8 }}>{theme.areas.length} research focus areas</div>
+                  <img
+                    src={theme.image}
+                    alt={theme.title}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: `linear-gradient(to top, rgba(10, 26, 47, 0.92) 0%, rgba(10, 26, 47, 0.4) 60%, rgba(10, 26, 47, 0.2) 100%)`,
+                  }} />
+                  <div style={{
+                    position: "relative",
+                    zIndex: 1,
+                    padding: "var(--space-8)",
+                    color: "#ffffff",
+                    textAlign: "left",
+                  }}>
+                    <div style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "var(--space-2)",
+                      background: "rgba(255, 255, 255, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      WebkitBackdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
+                      padding: "4px 12px",
+                      borderRadius: "var(--radius-full)",
+                      fontSize: "0.8rem",
+                      fontWeight: 600,
+                      marginBottom: "var(--space-3)",
+                    }}>
+                      <span>{theme.icon}</span> Focus Domain
+                    </div>
+                    <div style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff", marginBottom: 4 }}>
+                      {theme.title}
+                    </div>
+                    <div style={{ fontSize: "0.825rem", color: "rgba(255, 255, 255, 0.75)" }}>
+                      {theme.areas.length} research focus areas · BTIB Lab
+                    </div>
+                  </div>
                 </div>
                 {i % 2 === 0 && (
                   <div>

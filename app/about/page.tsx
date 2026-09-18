@@ -65,16 +65,58 @@ export default async function AboutPage() {
               </div>
             </div>
             <div style={{
-              background: "linear-gradient(135deg, var(--color-accent-subtle), var(--color-surface-3))",
+              position: "relative",
               borderRadius: "var(--radius-2xl)",
-              padding: "var(--space-10)",
-              textAlign: "center",
+              overflow: "hidden",
               border: "1px solid var(--color-border)",
+              boxShadow: "var(--shadow-xl)",
+              minHeight: 320,
             }}>
-              <div style={{ fontSize: "6rem", marginBottom: "var(--space-4)" }}>🧬</div>
-              <div style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
-                Advancing life sciences through<br />
-                <strong style={{ color: "var(--color-primary)" }}>innovation &amp; collaboration</strong>
+              <img
+                src="/images/hero-lab.jpg"
+                alt="Bioresources Technology and Industrial Biotechnology Laboratory Facility"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                  minHeight: 320,
+                }}
+              />
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(10, 26, 47, 0.85) 0%, rgba(10, 26, 47, 0.2) 60%, transparent 100%)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "var(--space-6)",
+              }}>
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "var(--space-2)",
+                  background: "rgba(255, 255, 255, 0.15)",
+                  backdropFilter: "blur(12px)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.25)",
+                  padding: "6px 14px",
+                  borderRadius: "var(--radius-full)",
+                  color: "#ffffff",
+                  fontSize: "0.8rem",
+                  fontWeight: 600,
+                  width: "fit-content",
+                  marginBottom: "var(--space-2)",
+                }}>
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-accent-light)", display: "inline-block" }} />
+                  BTIB Central Laboratory
+                </div>
+                <div style={{ color: "#ffffff", fontSize: "0.95rem", fontWeight: 600, lineHeight: 1.4 }}>
+                  Advancing life sciences through innovation &amp; bioresources engineering
+                </div>
+                <div style={{ color: "rgba(255, 255, 255, 0.75)", fontSize: "0.8rem", marginTop: 4 }}>
+                  Jahangirnagar University · Savar, Dhaka
+                </div>
               </div>
             </div>
           </div>

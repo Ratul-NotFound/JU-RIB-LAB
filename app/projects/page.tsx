@@ -28,6 +28,17 @@ const STATUS_COLORS: Record<string, string> = {
   PAUSED: "badge-neutral",
 };
 
+function getProjectImage(slug: string, category?: string | null, coverImageUrl?: string | null) {
+  if (coverImageUrl) return coverImageUrl;
+  if (slug.includes("liquid-tree") || slug.includes("algae") || (category && category.toLowerCase().includes("algae"))) {
+    return "/images/liquid-tree.jpg";
+  }
+  if (slug.includes("ferment") || slug.includes("enzyme") || (category && category.toLowerCase().includes("bioprocess"))) {
+    return "/images/fermentation.jpg";
+  }
+  return "/images/hero-lab.jpg";
+}
+
 export default async function ProjectsPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
   const { status } = await searchParams;
   const projects = await getProjects(status);
@@ -71,9 +82,38 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
             <div className="grid-3">
               {projects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="project-card" style={{ height: "100%" }}>
-                    <div className="project-card-img-placeholder">
-                      {project.isFeatured ? "⭐" : "🧬"}
+                  <div className="project-card" style={{ height: "100%", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                    <div style={{ height: 180, width: "100%", position: "relative", overflow: "hidden", background: "var(--color-surface-2)" }}>
+                      <img
+                        src={getProjectImage(project.slug, project.category, (project as any).coverImageUrl)}
+                        alt={project.title}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                      <div style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to top, rgba(10, 26, 47, 0.6) 0%, transparent 60%)"
+                      }} />
+                      {project.isFeatured && (
+                        <div style={{
+                          position: "absolute",
+                          top: "var(--space-3)",
+                          right: "var(--space-3)",
+                          background: "rgba(10, 26, 47, 0.75)",
+                          backdropFilter: "blur(8px)",
+                          border: "1px solid rgba(255, 255, 255, 0.2)",
+                          color: "#FBBF24",
+                          padding: "3px 10px",
+                          borderRadius: "var(--radius-full)",
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 4
+                        }}>
+                          ⭐ Featured
+                        </div>
+                      )}
                     </div>
                     <div className="project-card-body">
                       <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
