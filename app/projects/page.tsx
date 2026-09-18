@@ -92,26 +92,25 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
                       <div style={{
                         position: "absolute",
                         inset: 0,
-                        background: "linear-gradient(to top, rgba(10, 26, 47, 0.6) 0%, transparent 60%)"
+                        background: "rgba(15, 23, 42, 0.4)",
                       }} />
                       {project.isFeatured && (
                         <div style={{
                           position: "absolute",
                           top: "var(--space-3)",
                           right: "var(--space-3)",
-                          background: "rgba(10, 26, 47, 0.75)",
-                          backdropFilter: "blur(8px)",
+                          background: "var(--color-primary)",
                           border: "1px solid rgba(255, 255, 255, 0.2)",
-                          color: "#FBBF24",
-                          padding: "3px 10px",
-                          borderRadius: "var(--radius-full)",
-                          fontSize: "0.75rem",
+                          color: "#FFFFFF",
+                          padding: "2px 8px",
+                          borderRadius: "var(--radius-sm)",
+                          fontSize: "0.7rem",
+                          fontFamily: "var(--font-mono)",
                           fontWeight: 700,
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 4
+                          letterSpacing: "0.05em",
+                          textTransform: "uppercase",
                         }}>
-                          ⭐ Featured
+                          Featured
                         </div>
                       )}
                     </div>
@@ -120,10 +119,9 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
                         <span className={`badge ${STATUS_COLORS[project.status] ?? "badge-neutral"}`}>
                           {project.status}
                         </span>
-                        {project.isFeatured && <span className="badge badge-accent">Featured</span>}
                         {project.category && <span className="badge badge-neutral">{project.category}</span>}
                       </div>
-                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
+                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)", lineHeight: 1.4 }}>
                         {project.title}
                       </h3>
                       <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.5, flex: 1 }}>
@@ -134,25 +132,22 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
                           <div style={{ display: "flex" }}>
                             {project.members.map((m, i) => (
                               <div key={m.id} style={{
-                                width: 28, height: 28, borderRadius: "50%",
-                                background: "var(--color-accent-subtle)",
-                                border: "2px solid var(--color-surface)",
-                                marginLeft: i > 0 ? -8 : 0,
+                                width: 28, height: 28, borderRadius: "var(--radius-sm)",
+                                background: "var(--color-surface-2)",
+                                border: "1px solid var(--color-border)",
+                                marginLeft: i > 0 ? -4 : 0,
                                 display: "flex", alignItems: "center", justifyContent: "center",
-                                fontSize: "0.65rem", fontWeight: 700, color: "var(--color-primary)",
+                                fontSize: "0.7rem", fontWeight: 700, color: "var(--color-primary)",
                               }}>
                                 {m.profile.fullName.charAt(0)}
                               </div>
                             ))}
                           </div>
-                          <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)" }}>
-                            {project.members.length} member{project.members.length !== 1 ? "s" : ""}
+                          <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--color-text-muted)" }}>
+                            {project.members.length} Investigator{project.members.length !== 1 ? "s" : ""}
                           </span>
                         </div>
                       )}
-                      <div style={{ marginTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 600 }}>
-                        View Project →
-                      </div>
                     </div>
                   </div>
                 </Link>

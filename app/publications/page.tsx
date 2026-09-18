@@ -77,64 +77,71 @@ export default async function PublicationsPage({ searchParams }: { searchParams:
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
               {publications.map((pub) => (
-                <div key={pub.id} className="card card-body">
-                  <div style={{ display: "flex", gap: "var(--space-4)", alignItems: "flex-start" }}>
-                    <div style={{
-                      width: 48, height: 48, borderRadius: "var(--radius-md)",
-                      background: "var(--color-accent-subtle)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "1.4rem", flexShrink: 0,
-                    }}>
-                      📄
+                <div key={pub.id} style={{
+                  background: "#FFFFFF",
+                  border: "1px solid var(--color-border)",
+                  borderRadius: "var(--radius-md)",
+                  padding: "var(--space-6)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "var(--space-3)",
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-4)", flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap", alignItems: "center" }}>
+                      <span className={`badge ${TYPE_COLORS[pub.type] ?? "badge-neutral"}`}>
+                        {pub.type.replace("_", " ")}
+                      </span>
+                      {pub.isFeatured && <span className="badge badge-warning">Featured Paper</span>}
+                      <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", fontWeight: 600 }}>
+                        {pub.year}
+                      </span>
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-2)", flexWrap: "wrap", alignItems: "center" }}>
-                        <span className={`badge ${TYPE_COLORS[pub.type] ?? "badge-neutral"}`}>{pub.type.replace("_", " ")}</span>
-                        {pub.isFeatured && <span className="badge badge-accent">Featured</span>}
-                        <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>{pub.year}</span>
-                      </div>
-                      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-1)", lineHeight: 1.4 }}>
-                        {pub.doi ? (
-                          <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer"
-                            style={{ color: "inherit", textDecoration: "none" }}
-                            className="hover-accent">
-                            {pub.title}
-                          </a>
-                        ) : pub.title}
-                      </h3>
-                      <p style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", marginBottom: "var(--space-2)" }}>
-                        {pub.authors}
-                      </p>
-                      {pub.journal && (
-                        <p style={{ fontSize: "0.85rem", color: "var(--color-primary)", fontStyle: "italic" }}>
-                          {pub.journal}
-                        </p>
-                      )}
-                      {pub.abstract && (
-                        <p style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginTop: "var(--space-2)", lineHeight: 1.5 }}>
-                          {pub.abstract.slice(0, 200)}…
-                        </p>
-                      )}
-                      <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-3)", flexWrap: "wrap" }}>
-                        {pub.doi && (
-                          <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer"
-                            className="btn btn-sm btn-outline">
-                            DOI →
-                          </a>
-                        )}
-                        {pub.pdfUrl && (
-                          <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer"
-                            className="btn btn-sm btn-ghost">
-                            PDF ↓
-                          </a>
-                        )}
-                        {pub.citationCount && (
-                          <span style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", display: "flex", alignItems: "center" }}>
-                            🔖 {pub.citationCount} citations
-                          </span>
-                        )}
-                      </div>
+                    {pub.citationCount && (
+                      <span style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", background: "var(--color-surface-2)", padding: "2px 8px", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border-subtle)" }}>
+                        {pub.citationCount} Citations
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", lineHeight: 1.4, margin: 0 }}>
+                    {pub.doi ? (
+                      <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer"
+                        style={{ color: "inherit", textDecoration: "none" }}
+                        className="hover-accent">
+                        {pub.title}
+                      </a>
+                    ) : pub.title}
+                  </h3>
+
+                  <div style={{ fontSize: "0.875rem", color: "var(--color-text-2)", lineHeight: 1.5 }}>
+                    <strong style={{ color: "var(--color-secondary)", fontWeight: 600 }}>Authors:</strong> {pub.authors}
+                  </div>
+
+                  {pub.journal && (
+                    <div style={{ fontSize: "0.875rem", color: "var(--color-primary)", fontStyle: "italic" }}>
+                      {pub.journal}
                     </div>
+                  )}
+
+                  {pub.abstract && (
+                    <p style={{ fontSize: "0.825rem", color: "var(--color-text-muted)", lineHeight: 1.6, margin: 0 }}>
+                      {pub.abstract}
+                    </p>
+                  )}
+
+                  <div style={{ display: "flex", gap: "var(--space-3)", marginTop: "var(--space-2)", flexWrap: "wrap" }}>
+                    {pub.doi && (
+                      <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer"
+                        className="btn btn-sm btn-outline">
+                        View DOI (Crossref / Publisher) →
+                      </a>
+                    )}
+                    {pub.pdfUrl && (
+                      <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer"
+                        className="btn btn-sm btn-ghost">
+                        Download Full-Text PDF ↓
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

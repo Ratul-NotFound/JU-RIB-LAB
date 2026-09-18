@@ -30,9 +30,9 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
     <>
       <div className="page-header">
         <div className="container page-header-content">
-          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Knowledge Hub</div>
-          <h1 className="text-h1">Lab Blog</h1>
-          <p>Insights, discoveries, and stories from our researchers and students.</p>
+          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Dispatches & Insights</div>
+          <h1 className="text-h1">Research Blog & News</h1>
+          <p>Scientific perspectives, methodology write-ups, and laboratory breakthroughs.</p>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         <div className="container">
           {tag && (
             <div style={{ marginBottom: "var(--space-6)", display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
-              <span style={{ color: "var(--color-text-muted)", fontSize: "0.9rem" }}>Filtering by tag:</span>
+              <span style={{ color: "var(--color-text-muted)", fontSize: "0.9rem" }}>Filtering by domain:</span>
               <span className="badge badge-primary">{tag}</span>
               <Link href="/blog" className="btn btn-ghost btn-sm">Clear filter ×</Link>
             </div>
@@ -48,24 +48,26 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
 
           {posts.length === 0 ? (
             <div style={{ textAlign: "center", padding: "var(--space-20) 0", color: "var(--color-text-muted)" }}>
-              <div style={{ fontSize: "3rem", marginBottom: "var(--space-4)" }}>✍️</div>
-              <p>No articles published yet. Check back soon!</p>
+              <p>No articles published yet. Check back soon.</p>
             </div>
           ) : (
             <div className="grid-3">
               {posts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-                  <div className="blog-card" style={{ height: "100%" }}>
+                  <div className="blog-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                     <div style={{
-                      height: 200,
-                      background: "linear-gradient(135deg, var(--color-surface-3), var(--color-accent-subtle))",
+                      height: 140,
+                      background: "var(--color-surface-2)",
+                      borderBottom: "1px solid var(--color-border)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "3.5rem",
+                      padding: "var(--space-4)",
                     }}>
-                      📝
+                      <span style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                        Lab Dispatch
+                      </span>
                     </div>
-                    <div className="blog-card-body">
-                      <div className="blog-card-meta">
+                    <div className="blog-card-body" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+                      <div className="blog-card-meta" style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", marginBottom: "var(--space-2)" }}>
                         <span style={{ fontWeight: 600 }}>{post.author.name}</span>
                         <span>·</span>
                         <span>
@@ -74,32 +76,27 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
                             : ""}
                         </span>
                       </div>
-                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)", lineHeight: 1.3 }}>
+                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)", lineHeight: 1.4 }}>
                         {post.title}
                       </h3>
                       {post.excerpt && (
-                        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.6 }}>
+                        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.6, flex: 1 }}>
                           {post.excerpt.slice(0, 120)}…
                         </p>
                       )}
                       {post.tags.length > 0 && (
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)", marginTop: "var(--space-3)" }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-1)", marginTop: "var(--space-4)" }}>
                           {post.tags.slice(0, 3).map((t) => (
-                            <Link
+                            <span
                               key={t}
-                              href={`/blog?tag=${t}`}
-                              className="badge badge-primary"
-                              style={{ textDecoration: "none" }}
-                              onClick={(e) => e.stopPropagation()}
+                              className="badge badge-neutral"
+                              style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono)" }}
                             >
                               {t}
-                            </Link>
+                            </span>
                           ))}
                         </div>
                       )}
-                      <div style={{ marginTop: "auto", paddingTop: "var(--space-4)", color: "var(--color-accent)", fontSize: "0.875rem", fontWeight: 600 }}>
-                        Read article →
-                      </div>
                     </div>
                   </div>
                 </Link>

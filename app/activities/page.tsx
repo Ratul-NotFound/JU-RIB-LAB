@@ -36,9 +36,9 @@ export default async function ActivitiesPage() {
     <>
       <div className="page-header">
         <div className="container page-header-content">
-          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Events</div>
+          <div className="section-eyebrow" style={{ color: "var(--color-accent)", justifyContent: "flex-start" }}>Academic Events</div>
           <h1 className="text-h1">Activities & Events</h1>
-          <p>Seminars, workshops, and scientific events organized by our lab.</p>
+          <p>Scientific symposiums, technical workshops, and departmental seminars.</p>
         </div>
       </div>
 
@@ -47,32 +47,25 @@ export default async function ActivitiesPage() {
           {/* Upcoming */}
           {upcoming.length > 0 && (
             <div style={{ marginBottom: "var(--space-16)" }}>
-              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Upcoming</div>
+              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Upcoming Events</div>
               <div className="grid-3">
                 {upcoming.map((activity) => (
                   <Link key={activity.id} href={`/activities/${activity.slug}`} style={{ textDecoration: "none" }}>
-                    <div className="card card-body" style={{ borderLeft: "4px solid var(--color-accent)" }}>
-                      <div style={{ display: "flex", gap: "var(--space-3)", alignItems: "flex-start" }}>
-                        <div style={{
-                          width: 52, height: 52, borderRadius: "var(--radius-md)",
-                          background: "var(--color-accent-subtle)",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          fontSize: "1.6rem", flexShrink: 0,
-                        }}>
-                          {ACTIVITY_ICONS[activity.type] ?? "📅"}
+                    <div className="card card-body" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "var(--space-3)" }}>
+                        <span className="badge badge-primary">{activity.type}</span>
+                        <span className="badge badge-success">Upcoming</span>
+                      </div>
+                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-3)", lineHeight: 1.4 }}>
+                        {activity.title}
+                      </h3>
+                      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "var(--space-1)", fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
+                        <div style={{ fontFamily: "var(--font-mono)", color: "var(--color-primary)", fontWeight: 600 }}>
+                          {new Date(activity.eventDate).toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" })}
                         </div>
-                        <div>
-                          <span className="badge badge-success" style={{ marginBottom: "var(--space-2)" }}>Upcoming</span>
-                          <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>
-                            {activity.title}
-                          </h3>
-                          <div style={{ fontSize: "0.8rem", color: "var(--color-accent)", fontWeight: 600 }}>
-                            📅 {new Date(activity.eventDate).toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
-                          </div>
-                          {activity.location && (
-                            <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", marginTop: 2 }}>📍 {activity.location}</div>
-                          )}
-                        </div>
+                        {activity.location && (
+                          <div style={{ color: "var(--color-text-muted)" }}>{activity.location}</div>
+                        )}
                       </div>
                     </div>
                   </Link>
@@ -84,24 +77,25 @@ export default async function ActivitiesPage() {
           {/* Past */}
           {past.length > 0 && (
             <div>
-              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Past Events</div>
+              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Archived Events</div>
               <div className="grid-3">
                 {past.map((activity) => (
                   <Link key={activity.id} href={`/activities/${activity.slug}`} style={{ textDecoration: "none" }}>
-                    <div className="card card-body" style={{ opacity: 0.85 }}>
-                      <div style={{ fontSize: "2rem", marginBottom: "var(--space-3)" }}>
-                        {ACTIVITY_ICONS[activity.type] ?? "📅"}
+                    <div className="card card-body" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                      <div style={{ marginBottom: "var(--space-3)" }}>
+                        <span className="badge badge-neutral">{activity.type}</span>
                       </div>
-                      <span className="badge badge-neutral" style={{ marginBottom: "var(--space-2)" }}>{activity.type}</span>
-                      <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>
+                      <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-3)", lineHeight: 1.4 }}>
                         {activity.title}
                       </h3>
-                      <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
-                        {new Date(activity.eventDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "var(--space-1)", fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
+                        <div style={{ fontFamily: "var(--font-mono)" }}>
+                          {new Date(activity.eventDate).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                        </div>
+                        {activity.location && (
+                          <div>{activity.location}</div>
+                        )}
                       </div>
-                      {activity.location && (
-                        <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>📍 {activity.location}</div>
-                      )}
                     </div>
                   </Link>
                 ))}
@@ -111,8 +105,7 @@ export default async function ActivitiesPage() {
 
           {activities.length === 0 && (
             <div style={{ textAlign: "center", padding: "var(--space-20) 0", color: "var(--color-text-muted)" }}>
-              <div style={{ fontSize: "3rem", marginBottom: "var(--space-4)" }}>📅</div>
-              <p>No activities listed yet. Check back soon!</p>
+              <p>No activities listed yet. Check back soon.</p>
             </div>
           )}
         </div>

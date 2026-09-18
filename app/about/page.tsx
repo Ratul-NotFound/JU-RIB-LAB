@@ -66,10 +66,9 @@ export default async function AboutPage() {
             </div>
             <div style={{
               position: "relative",
-              borderRadius: "var(--radius-2xl)",
+              borderRadius: "var(--radius-lg)",
               overflow: "hidden",
               border: "1px solid var(--color-border)",
-              boxShadow: "var(--shadow-xl)",
               minHeight: 320,
             }}>
               <img
@@ -86,7 +85,7 @@ export default async function AboutPage() {
               <div style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(to top, rgba(10, 26, 47, 0.85) 0%, rgba(10, 26, 47, 0.2) 60%, transparent 100%)",
+                background: "rgba(15, 23, 42, 0.85)",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-end",
@@ -96,25 +95,25 @@ export default async function AboutPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "var(--space-2)",
-                  background: "rgba(255, 255, 255, 0.15)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255, 255, 255, 0.25)",
-                  padding: "6px 14px",
-                  borderRadius: "var(--radius-full)",
-                  color: "#ffffff",
-                  fontSize: "0.8rem",
+                  background: "rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  padding: "4px 12px",
+                  borderRadius: "var(--radius-sm)",
+                  color: "#FFFFFF",
+                  fontSize: "0.75rem",
                   fontWeight: 600,
                   width: "fit-content",
                   marginBottom: "var(--space-2)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
                 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-accent-light)", display: "inline-block" }} />
+                  <span style={{ width: 6, height: 6, background: "var(--color-accent-light)", display: "inline-block" }} />
                   BTIB Central Laboratory
                 </div>
-                <div style={{ color: "#ffffff", fontSize: "0.95rem", fontWeight: 600, lineHeight: 1.4 }}>
-                  Advancing life sciences through innovation &amp; bioresources engineering
+                <div style={{ color: "#FFFFFF", fontSize: "0.95rem", fontWeight: 700, lineHeight: 1.4 }}>
+                  Advancing bioresources utilization &amp; industrial biotechnology
                 </div>
-                <div style={{ color: "rgba(255, 255, 255, 0.75)", fontSize: "0.8rem", marginTop: 4 }}>
+                <div style={{ color: "#94A3B8", fontSize: "0.8rem", marginTop: 4 }}>
                   Jahangirnagar University · Savar, Dhaka
                 </div>
               </div>
@@ -124,26 +123,38 @@ export default async function AboutPage() {
       </section>
 
       {/* ── Vision & Mission ── */}
-      <section className="section-sm" style={{ background: "var(--color-surface)" }}>
+      <section className="section-sm" style={{ background: "#FFFFFF", borderTop: "1px solid var(--color-border)", borderBottom: "1px solid var(--color-border)" }}>
         <div className="container">
-          <div className="grid-2">
+          <div className="grid-2" style={{ gap: "var(--space-6)" }}>
             <div style={{
-              background: "linear-gradient(135deg, var(--color-primary), var(--color-primary-light))",
-              borderRadius: "var(--radius-xl)", padding: "var(--space-8)", color: "white",
+              background: "var(--color-bg)",
+              borderRadius: "var(--radius-lg)",
+              padding: "var(--space-8)",
+              border: "1px solid var(--color-border)",
             }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "var(--space-4)" }}>🎯</div>
-              <h3 style={{ color: "white", fontSize: "1.3rem", fontWeight: 700, marginBottom: "var(--space-4)" }}>Our Vision</h3>
-              <p style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.08em", color: "var(--color-primary)", textTransform: "uppercase", marginBottom: "var(--space-2)" }}>
+                Institutional Objective
+              </div>
+              <h3 style={{ color: "var(--color-secondary)", fontSize: "1.3rem", fontWeight: 800, marginBottom: "var(--space-3)" }}>
+                Our Vision
+              </h3>
+              <p style={{ color: "var(--color-text-2)", lineHeight: 1.7, fontSize: "0.95rem" }}>
                 {settings?.vision ?? "To be a globally recognized center of excellence in biotechnology and genetic engineering, driving scientific breakthroughs that improve lives and sustain our planet."}
               </p>
             </div>
             <div style={{
-              background: "linear-gradient(135deg, var(--color-navy), var(--color-secondary))",
-              borderRadius: "var(--radius-xl)", padding: "var(--space-8)", color: "white",
+              background: "var(--color-bg)",
+              borderRadius: "var(--radius-lg)",
+              padding: "var(--space-8)",
+              border: "1px solid var(--color-border)",
             }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "var(--space-4)" }}>🚀</div>
-              <h3 style={{ color: "white", fontSize: "1.3rem", fontWeight: 700, marginBottom: "var(--space-4)" }}>Our Mission</h3>
-              <p style={{ color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
+              <div style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.08em", color: "var(--color-primary)", textTransform: "uppercase", marginBottom: "var(--space-2)" }}>
+                Scientific Mandate
+              </div>
+              <h3 style={{ color: "var(--color-secondary)", fontSize: "1.3rem", fontWeight: 800, marginBottom: "var(--space-3)" }}>
+                Our Mission
+              </h3>
+              <p style={{ color: "var(--color-text-2)", lineHeight: 1.7, fontSize: "0.95rem" }}>
                 {settings?.mission ?? "To foster cutting-edge research, develop skilled scientists, and translate scientific discoveries into solutions that benefit society through innovation, education, and collaboration."}
               </p>
             </div>

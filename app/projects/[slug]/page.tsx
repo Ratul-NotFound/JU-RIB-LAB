@@ -107,12 +107,11 @@ export default async function ProjectDetailPage({
             <div>
               <div style={{
                 position: "relative",
-                borderRadius: "var(--radius-xl)",
+                borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
                 marginBottom: "var(--space-8)",
                 maxHeight: 360,
                 border: "1px solid var(--color-border)",
-                boxShadow: "var(--shadow-md)"
               }}>
                 <img
                   src={project.coverImageUrl || (project.slug?.includes("liquid-tree") || project.slug?.includes("algae") ? "/images/liquid-tree.jpg" : project.slug?.includes("ferment") || project.slug?.includes("enzyme") ? "/images/fermentation.jpg" : "/images/hero-lab.jpg")}
@@ -135,7 +134,7 @@ export default async function ProjectDetailPage({
 
               {project.tags && project.tags.length > 0 && (
                 <div style={{ marginTop: "var(--space-8)" }}>
-                  <h3 style={{ fontSize: "0.9rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--color-text-muted)", marginBottom: "var(--space-3)" }}>
+                  <h3 style={{ fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--color-text-muted)", marginBottom: "var(--space-3)" }}>
                     Research Keywords
                   </h3>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
@@ -168,7 +167,7 @@ export default async function ProjectDetailPage({
                       <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-faint)", fontWeight: 700, marginBottom: 2 }}>
                         Start Date
                       </div>
-                      <div style={{ fontSize: "0.9rem", color: "var(--color-text-2)" }}>
+                      <div style={{ fontSize: "0.9rem", color: "var(--color-text-2)", fontFamily: "var(--font-mono)" }}>
                         {new Date(project.startDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
                       </div>
                     </div>
@@ -178,7 +177,7 @@ export default async function ProjectDetailPage({
                       <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-faint)", fontWeight: 700, marginBottom: 2 }}>
                         End Date
                       </div>
-                      <div style={{ fontSize: "0.9rem", color: "var(--color-text-2)" }}>
+                      <div style={{ fontSize: "0.9rem", color: "var(--color-text-2)", fontFamily: "var(--font-mono)" }}>
                         {new Date(project.endDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
                       </div>
                     </div>
@@ -211,12 +210,12 @@ export default async function ProjectDetailPage({
                           style={{
                             width: 36,
                             height: 36,
-                            borderRadius: "50%",
-                            background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
+                            borderRadius: "var(--radius-sm)",
+                            background: "var(--color-primary)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            color: "white",
+                            color: "#FFFFFF",
                             fontWeight: 700,
                             fontSize: "0.85rem",
                             flexShrink: 0,

@@ -40,56 +40,43 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: "linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary-dark) 60%, var(--color-primary) 100%)",
+      background: "var(--color-secondary)",
       display: "flex", alignItems: "center", justifyContent: "center",
-      position: "relative", overflow: "hidden",
       padding: "var(--space-6)",
     }}>
-      {/* BG decoration */}
       <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(rgba(0,200,150,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,150,0.05) 1px, transparent 1px)",
-        backgroundSize: "60px 60px",
-      }} />
-      <div style={{
-        position: "absolute", top: "20%", right: "10%",
-        width: 300, height: 300,
-        background: "radial-gradient(circle, rgba(0,200,150,0.15), transparent 70%)",
-        borderRadius: "50%",
-      }} />
-
-      <div style={{
-        background: "rgba(255,255,255,0.97)",
-        backdropFilter: "blur(20px)",
-        borderRadius: "var(--radius-2xl)",
+        background: "var(--color-surface)",
+        borderRadius: "var(--radius-lg)",
         padding: "var(--space-10)",
         width: "100%", maxWidth: 440,
-        boxShadow: "var(--shadow-xl)",
-        position: "relative", zIndex: 1,
-        animation: "slideUp 0.3s ease",
+        border: "1px solid var(--color-border)",
       }}>
-        {/* Logo */}
+        {/* Institutional seal */}
         <div style={{ textAlign: "center", marginBottom: "var(--space-8)" }}>
           <div style={{
-            width: 56, height: 56,
-            background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
-            borderRadius: "var(--radius-lg)",
+            width: 48, height: 48,
+            background: "var(--color-primary)",
+            borderRadius: "var(--radius-sm)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: "1.8rem", margin: "0 auto var(--space-4)",
+            fontSize: "0.9rem", fontFamily: "var(--font-mono)", fontWeight: 800, color: "#FFFFFF",
+            margin: "0 auto var(--space-4)",
           }}>
-            🧬
+            BTIB
           </div>
-          <h1 style={{ fontSize: "1.5rem", fontFamily: "var(--font-heading)", fontWeight: 800, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>
-            Sign In to BTIB Lab
+          <div style={{ fontSize: "0.75rem", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-muted)", marginBottom: "var(--space-1)" }}>
+            Academic Access Portal
+          </div>
+          <h1 style={{ fontSize: "1.35rem", fontFamily: "var(--font-heading)", fontWeight: 800, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>
+            Bioresources Technology Lab
           </h1>
-          <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)" }}>
-            Welcome back! Please enter your credentials.
+          <p style={{ fontSize: "0.85rem", color: "var(--color-text-muted)" }}>
+            Jahangirnagar University · Department of BGE
           </p>
         </div>
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
           <div className="form-group">
-            <label htmlFor="email" className="form-label">Email Address</label>
+            <label htmlFor="email" className="form-label">University Email Address</label>
             <input
               id="email"
               name="email"
@@ -97,7 +84,7 @@ export default function LoginPage() {
               required
               autoComplete="email"
               className="form-input"
-              placeholder="your@email.com"
+              placeholder="user@juniv.edu"
               value={form.email}
               onChange={handleChange}
             />
@@ -121,7 +108,7 @@ export default function LoginPage() {
             <div style={{
               background: "#FEE2E2", color: "#991B1B",
               padding: "var(--space-3) var(--space-4)",
-              borderRadius: "var(--radius-md)",
+              borderRadius: "var(--radius-sm)",
               fontSize: "0.875rem",
               border: "1px solid #FECACA",
             }}>
@@ -134,15 +121,15 @@ export default function LoginPage() {
             id="login-btn"
             disabled={loading}
             className="btn btn-primary"
-            style={{ width: "100%", justifyContent: "center", marginTop: "var(--space-2)", padding: "var(--space-4)" }}
+            style={{ width: "100%", justifyContent: "center", marginTop: "var(--space-2)", padding: "var(--space-3)" }}
           >
-            {loading ? "Signing in…" : "Sign In →"}
+            {loading ? "Authenticating…" : "Authenticate →"}
           </button>
         </form>
 
         <div style={{ textAlign: "center", marginTop: "var(--space-6)" }}>
-          <Link href="/" style={{ fontSize: "0.875rem", color: "var(--color-text-muted)" }}>
-            ← Back to website
+          <Link href="/" style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", textDecoration: "none" }}>
+            ← Return to Lab Homepage
           </Link>
         </div>
       </div>

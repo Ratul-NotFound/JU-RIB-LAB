@@ -27,14 +27,15 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <div
                 style={{
-                  width: 40,
-                  height: 40,
-                  background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
+                  width: 36,
+                  height: 36,
+                  background: "var(--color-primary)",
                   borderRadius: "var(--radius-md)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "1.3rem",
+                  fontSize: "1.1rem",
+                  flexShrink: 0,
                 }}
               >
                 🧬
@@ -108,8 +109,8 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <p>© {currentYear} Bioresources Technology and Industrial Biotechnology Laboratory, Jahangirnagar University. All rights reserved.</p>
-          <p>Built with 💚 for science</p>
+          <p>© {currentYear} Bioresources Technology and Industrial Biotechnology Laboratory (BTIB Lab). Jahangirnagar University.</p>
+          <p>Dept. of Biotechnology &amp; Genetic Engineering · Faculty of Biological Sciences</p>
         </div>
       </div>
     </footer>

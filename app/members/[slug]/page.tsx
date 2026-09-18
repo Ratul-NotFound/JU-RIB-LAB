@@ -93,17 +93,17 @@ export default async function MemberDetailPage({
           <div style={{ display: "flex", alignItems: "center", gap: "var(--space-8)", flexWrap: "wrap" }}>
             <div
               style={{
-                width: 120,
-                height: 120,
-                borderRadius: "50%",
-                background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
+                width: 110,
+                height: 110,
+                borderRadius: "var(--radius-sm)",
+                background: "var(--color-primary)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "white",
-                fontSize: "2.5rem",
+                color: "#FFFFFF",
+                fontSize: "2.2rem",
                 fontWeight: 800,
-                border: "4px solid rgba(255,255,255,0.2)",
+                border: "2px solid var(--color-border)",
                 flexShrink: 0,
                 overflow: "hidden",
               }}
@@ -169,24 +169,30 @@ export default async function MemberDetailPage({
             {/* Sidebar */}
             <div className="card card-body">
               <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-5)", color: "var(--color-secondary)" }}>
-                Contact & Profiles
+                Contact & Academic IDs
               </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
                 {profile.user?.email && (
-                  <a
-                    href={`mailto:${profile.user.email}`}
-                    style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", color: "var(--color-text-2)", fontSize: "0.9rem", textDecoration: "none" }}
-                  >
-                    <span style={{ fontSize: "1.1rem" }}>✉️</span> {profile.user.email}
-                  </a>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <span style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono)", textTransform: "uppercase", color: "var(--color-text-faint)" }}>Official Email</span>
+                    <a
+                      href={`mailto:${profile.user.email}`}
+                      style={{ color: "var(--color-primary)", fontSize: "0.875rem", textDecoration: "none", fontWeight: 500 }}
+                    >
+                      {profile.user.email}
+                    </a>
+                  </div>
                 )}
                 {profile.phone && (
-                  <a
-                    href={`tel:${profile.phone}`}
-                    style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", color: "var(--color-text-2)", fontSize: "0.9rem", textDecoration: "none" }}
-                  >
-                    <span style={{ fontSize: "1.1rem" }}>📞</span> {profile.phone}
-                  </a>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <span style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono)", textTransform: "uppercase", color: "var(--color-text-faint)" }}>Telephone</span>
+                    <a
+                      href={`tel:${profile.phone}`}
+                      style={{ color: "var(--color-text-2)", fontSize: "0.875rem", textDecoration: "none" }}
+                    >
+                      {profile.phone}
+                    </a>
+                  </div>
                 )}
                 {profile.linkedin && (
                   <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">

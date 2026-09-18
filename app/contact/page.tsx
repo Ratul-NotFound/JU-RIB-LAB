@@ -35,22 +35,23 @@ export default function ContactPage() {
           <div className="split-contact">
             {/* Contact info */}
             <div>
-              <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Lab Information</h2>
+              <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Laboratory Directory & Facilities</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
                 {[
-                  { icon: "📍", label: "Address", val: "Department of Biotechnology & Genetic Engineering, Jahangirnagar University, Savar, Dhaka-1342, Bangladesh" },
-                  { icon: "✉️", label: "Email", val: "bge@juniv.edu" },
-                  { icon: "📞", label: "Phone", val: "+880 2 7791045" },
-                  { icon: "🕘", label: "Office Hours", val: "Sunday–Thursday: 9:00 AM – 5:00 PM" },
+                  { tag: "LOCATION", label: "Postal & Physical Address", val: "Bioresources Technology & Industrial Biotechnology Laboratory, Department of Biotechnology & Genetic Engineering, Jahangirnagar University, Savar, Dhaka-1342, Bangladesh" },
+                  { tag: "EMAIL", label: "Official Inquiry Mailbox", val: "bge@juniv.edu" },
+                  { tag: "TEL", label: "Department PBX", val: "+880 2 7791045" },
+                  { tag: "HOURS", label: "Laboratory Operational Hours", val: "Sunday – Thursday: 08:30 – 17:00 BST" },
                 ].map((item) => (
                   <div key={item.label} style={{ display: "flex", gap: "var(--space-4)", alignItems: "flex-start" }}>
                     <div style={{
-                      width: 44, height: 44, borderRadius: "var(--radius-md)",
-                      background: "var(--color-accent-subtle)",
+                      width: 48, height: 32, borderRadius: "var(--radius-sm)",
+                      background: "var(--color-surface-2)",
+                      border: "1px solid var(--color-border)",
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "1.3rem", flexShrink: 0,
+                      fontSize: "0.65rem", fontFamily: "var(--font-mono)", fontWeight: 700, color: "var(--color-primary)", flexShrink: 0,
                     }}>
-                      {item.icon}
+                      {item.tag}
                     </div>
                     <div>
                       <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--color-text-muted)", marginBottom: 2 }}>
@@ -67,40 +68,43 @@ export default function ContactPage() {
               {/* Map placeholder */}
               <div style={{
                 marginTop: "var(--space-8)",
-                height: 200,
-                background: "linear-gradient(135deg, var(--color-surface-3), var(--color-accent-subtle))",
-                borderRadius: "var(--radius-xl)",
-                display: "flex", alignItems: "center", justifyContent: "center",
+                padding: "var(--space-6)",
+                background: "var(--color-surface-2)",
+                borderRadius: "var(--radius-lg)",
                 border: "1px solid var(--color-border)",
-                flexDirection: "column", gap: "var(--space-2)",
+                display: "flex", flexDirection: "column", gap: "var(--space-3)",
               }}>
-                <div style={{ fontSize: "2rem" }}>🗺️</div>
-                <div style={{ fontSize: "0.875rem", color: "var(--color-text-muted)" }}>
-                  Jahangirnagar University, Savar
+                <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--color-secondary)" }}>
+                  Campus Geolocation Coordinates
                 </div>
-                <a
-                  href="https://maps.google.com/?q=Jahangirnagar+University+Savar+Dhaka"
-                  target="_blank" rel="noopener noreferrer"
-                  className="btn btn-outline btn-sm"
-                >
-                  Open in Google Maps
-                </a>
+                <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
+                  23.8824° N, 90.2671° E · Savar, Dhaka-1342
+                </div>
+                <div>
+                  <a
+                    href="https://maps.google.com/?q=Jahangirnagar+University+Savar+Dhaka"
+                    target="_blank" rel="noopener noreferrer"
+                    className="btn btn-outline btn-sm"
+                  >
+                    View on Google Maps →
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Contact form */}
             <div className="card card-body" style={{ padding: "var(--space-8)" }}>
-              <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Send a Message</h2>
+              <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Direct Scientific Inquiry</h2>
               {status === "sent" ? (
                 <div style={{
                   textAlign: "center", padding: "var(--space-12) var(--space-8)",
-                  background: "var(--color-accent-subtle)", borderRadius: "var(--radius-xl)",
+                  background: "var(--color-surface-2)", borderRadius: "var(--radius-lg)",
+                  border: "1px solid var(--color-border)",
                 }}>
-                  <div style={{ fontSize: "3rem", marginBottom: "var(--space-4)" }}>✅</div>
-                  <h3 style={{ color: "var(--color-primary)", marginBottom: "var(--space-2)" }}>Message Sent!</h3>
-                  <p style={{ color: "var(--color-text-muted)" }}>We&apos;ll get back to you as soon as possible.</p>
+                  <h3 style={{ color: "var(--color-primary)", marginBottom: "var(--space-2)" }}>Inquiry Transmitted</h3>
+                  <p style={{ color: "var(--color-text-muted)", fontSize: "0.9rem" }}>Our departmental team will review your message and respond shortly.</p>
                   <button className="btn btn-outline btn-sm" style={{ marginTop: "var(--space-6)" }} onClick={() => setStatus("idle")}>
-                    Send another message
+                    Send another inquiry
                   </button>
                 </div>
               ) : (
@@ -109,12 +113,12 @@ export default function ContactPage() {
                     <div className="form-group">
                       <label htmlFor="name" className="form-label">Full Name *</label>
                       <input id="name" name="name" type="text" required className="form-input"
-                        placeholder="Your name" value={form.name} onChange={handleChange} />
+                        placeholder="Dr. / Prof. / Scholar" value={form.name} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="email" className="form-label">Email Address *</label>
+                      <label htmlFor="email" className="form-label">Institutional Email *</label>
                       <input id="email" name="email" type="email" required className="form-input"
-                        placeholder="your@email.com" value={form.email} onChange={handleChange} />
+                        placeholder="academic@institution.edu" value={form.email} onChange={handleChange} />
                     </div>
                   </div>
                   <div className="form-group">

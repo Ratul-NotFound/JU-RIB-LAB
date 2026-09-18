@@ -93,10 +93,9 @@ export default function ResearchPage() {
                 )}
                 <div style={{
                   position: "relative",
-                  borderRadius: "var(--radius-2xl)",
+                  borderRadius: "var(--radius-lg)",
                   overflow: "hidden",
                   minHeight: 280,
-                  boxShadow: "var(--shadow-lg)",
                   border: "1px solid var(--color-border)",
                   display: "flex",
                   flexDirection: "column",
@@ -116,12 +115,12 @@ export default function ResearchPage() {
                   <div style={{
                     position: "absolute",
                     inset: 0,
-                    background: `linear-gradient(to top, rgba(10, 26, 47, 0.92) 0%, rgba(10, 26, 47, 0.4) 60%, rgba(10, 26, 47, 0.2) 100%)`,
+                    background: "rgba(15, 23, 42, 0.88)",
                   }} />
                   <div style={{
                     position: "relative",
                     zIndex: 1,
-                    padding: "var(--space-8)",
+                    padding: "var(--space-6)",
                     color: "#ffffff",
                     textAlign: "left",
                   }}>
@@ -129,23 +128,24 @@ export default function ResearchPage() {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "var(--space-2)",
-                      background: "rgba(255, 255, 255, 0.15)",
-                      backdropFilter: "blur(10px)",
-                      WebkitBackdropFilter: "blur(10px)",
+                      background: "rgba(255, 255, 255, 0.1)",
                       border: "1px solid rgba(255, 255, 255, 0.2)",
                       padding: "4px 12px",
-                      borderRadius: "var(--radius-full)",
-                      fontSize: "0.8rem",
+                      borderRadius: "var(--radius-sm)",
+                      fontSize: "0.75rem",
                       fontWeight: 600,
                       marginBottom: "var(--space-3)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      color: "#E2E8F0",
                     }}>
-                      <span>{theme.icon}</span> Focus Domain
+                      <span>{theme.icon}</span> Research Domain
                     </div>
-                    <div style={{ fontSize: "1.25rem", fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff", marginBottom: 4 }}>
+                    <div style={{ fontSize: "1.2rem", fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff", marginBottom: 4 }}>
                       {theme.title}
                     </div>
-                    <div style={{ fontSize: "0.825rem", color: "rgba(255, 255, 255, 0.75)" }}>
-                      {theme.areas.length} research focus areas · BTIB Lab
+                    <div style={{ fontSize: "0.8rem", color: "#94A3B8" }}>
+                      {theme.areas.length} core focus areas · BTIB Lab
                     </div>
                   </div>
                 </div>
