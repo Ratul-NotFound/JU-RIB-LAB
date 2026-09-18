@@ -1264,3 +1264,47 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 480px) {
   :root { --nav-height: 60px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   SCIENTIFIC LAB ANIMATIONS & KEYFRAMES
+═══════════════════════════════════════════════════════ */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scanLine {
+  0% { top: 0%; opacity: 0.15; }
+  50% { opacity: 0.85; }
+  100% { top: 100%; opacity: 0.15; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(3deg); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 200, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(0, 240, 200, 0.8); }
+}
+
+.hero-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
