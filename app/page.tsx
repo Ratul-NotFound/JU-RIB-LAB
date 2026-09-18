@@ -32,32 +32,50 @@ const RESEARCH_DOMAINS = [
   {
     code: "01",
     title: "Microbial Biotechnology",
+    subtitle: "Biocatalysis & Enzymes",
+    icon: "🔬",
     desc: "Production of high-yield industrial enzymes, microbial secondary metabolites, and screening of bacterial strains for biocatalysis.",
+    tags: ["Industrial Enzymes", "Secondary Metabolites", "Biocatalysis"],
   },
   {
     code: "02",
     title: "Bioprocess Engineering",
+    subtitle: "Fermentation & Bioreactors",
+    icon: "⚗️",
     desc: "Solid-state and submerged fermentation protocols, hydrodynamic bioreactor design, and downstream product separation.",
+    tags: ["Bioreactor Design", "Fermentation", "Downstream Processing"],
   },
   {
     code: "03",
     title: "Algae & Carbon Capture",
+    subtitle: "Photobioreactors & CO2",
+    icon: "🌿",
     desc: "Microalgal photobioreactor systems ('Liquid-Tree') designed for biological CO2 sequestration and urban air bioremediation.",
+    tags: ["Liquid-Tree", "CO2 Sequestration", "Biofuels"],
   },
   {
     code: "04",
     title: "Biomaterials & Waste Valorization",
+    subtitle: "Biopolymers & Circular Economy",
+    icon: "♻️",
     desc: "Bioconversion of agricultural byproducts and indigenous bioresources into biodegradable biopolymers and composite materials.",
+    tags: ["Bioplastics", "Agro-Waste", "Circular Economy"],
   },
   {
     code: "05",
     title: "Structural Biology & Modeling",
+    subtitle: "Protein Engineering & MD",
+    icon: "🧬",
     desc: "In silico protein modeling, molecular dynamics simulations, enzyme active-site optimization, and catalytic characterization.",
+    tags: ["In Silico Modeling", "MD Simulations", "Enzyme Active-Site"],
   },
   {
     code: "06",
     title: "Computational Omics",
+    subtitle: "Metagenomics & Flux Analysis",
+    icon: "📊",
     desc: "Metagenomic profiling of indigenous bioresources, metabolic flux modeling, and high-throughput data analysis pipelines.",
+    tags: ["Metagenomics", "Metabolic Flux", "Data Pipelines"],
   },
 ];
 
@@ -72,39 +90,20 @@ export default async function HomePage() {
   return (
     <>
       {/* ── 1. ACADEMIC HERO HEADER ─────────────────── */}
-      <header className="hero" style={{ minHeight: "75vh", display: "flex", alignItems: "center", position: "relative" }}>
+      <header className="hero">
         <div className="hero-bg-media">
           <img
             src="/images/hero-lab.jpg"
             alt="BTIB Laboratory Facility"
           />
         </div>
-        <div className="hero-bg-overlay" style={{ background: "rgba(15, 23, 42, 0.94)" }} />
+        <div className="hero-bg-overlay" />
 
-        <div className="container" style={{ position: "relative", zIndex: 2, padding: "clamp(3rem, 5vw, 4.5rem) 0" }}>
+        <div className="container hero-content">
           <div style={{ maxWidth: 820 }}>
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "rgba(255, 255, 255, 0.08)",
-              border: "1px solid rgba(255, 255, 255, 0.16)",
-              padding: "5px 12px",
-              borderRadius: "var(--radius-sm)",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              color: "#E2E8F0",
-              marginBottom: "var(--space-4)",
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-            }}>
-              <span style={{ width: 6, height: 6, background: "#34D399", display: "inline-block" }} />
-              {university} · Dept. of Biotechnology &amp; Genetic Engineering
-            </div>
-
             <h1 style={{
               color: "#FFFFFF",
-              fontSize: "clamp(2rem, 3.8vw, 3.1rem)",
+              fontSize: "clamp(1.75rem, 4.5vw, 3rem)",
               fontWeight: 800,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
@@ -115,7 +114,7 @@ export default async function HomePage() {
 
             <p style={{
               color: "#CBD5E1",
-              fontSize: "1.05rem",
+              fontSize: "clamp(0.925rem, 2vw, 1.05rem)",
               lineHeight: 1.7,
               marginBottom: "var(--space-8)",
               maxWidth: 720,
@@ -123,29 +122,17 @@ export default async function HomePage() {
               {tagline}
             </p>
 
-            <div style={{ display: "flex", gap: "var(--space-3)", flexWrap: "wrap" }}>
+            <div className="hero-actions">
               <Link href="/research" className="btn btn-primary btn-lg">
                 Research Areas →
               </Link>
-              <Link href="/projects" className="btn btn-lg" style={{
-                background: "rgba(255, 255, 255, 0.06)",
-                border: "1px solid rgba(255, 255, 255, 0.25)",
-                color: "#FFFFFF",
-              }}>
+              <Link href="/projects" className="btn btn-lg btn-hero-glass">
                 Projects
               </Link>
-              <Link href="/publications" className="btn btn-lg" style={{
-                background: "transparent",
-                border: "1px solid rgba(255, 255, 255, 0.25)",
-                color: "#FFFFFF",
-              }}>
+              <Link href="/publications" className="btn btn-lg btn-hero-glass">
                 Publications
               </Link>
-              <Link href="/members" className="btn btn-lg" style={{
-                background: "transparent",
-                border: "1px solid rgba(255, 255, 255, 0.25)",
-                color: "#FFFFFF",
-              }}>
+              <Link href="/members" className="btn btn-lg btn-hero-glass">
                 Team
               </Link>
             </div>
@@ -154,34 +141,34 @@ export default async function HomePage() {
       </header>
 
       {/* ── 2. SUMMARY METRICS ─────────────────────── */}
-      <section style={{ background: "#FFFFFF", borderBottom: "1px solid var(--color-border)", padding: "var(--space-6) 0" }}>
+      <section className="metrics-section">
         <div className="container">
-          <div className="grid-3" style={{ gap: "var(--space-4)" }}>
-            <div style={{ padding: "var(--space-4) var(--space-5)", borderLeft: "3px solid var(--color-primary)", background: "var(--color-bg)" }}>
-              <div style={{ fontSize: "1.75rem", fontWeight: 800, color: "var(--color-primary)", fontFamily: "var(--font-heading)", lineHeight: 1 }}>
-                {projectCount || 3}
+          <div className="metrics-grid">
+            <div className="metric-card">
+              <div className="metric-card-top">
+                <span className="metric-number">{projectCount || 3}</span>
+                <span className="metric-icon-box" aria-hidden="true">🔬</span>
               </div>
-              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--color-secondary)", marginTop: 4 }}>
-                Active Research Projects
-              </div>
+              <div className="metric-label">Active Research Projects</div>
+              <div className="metric-sub">Applied &amp; industrial bioprocess initiatives</div>
             </div>
 
-            <div style={{ padding: "var(--space-4) var(--space-5)", borderLeft: "3px solid var(--color-primary)", background: "var(--color-bg)" }}>
-              <div style={{ fontSize: "1.75rem", fontWeight: 800, color: "var(--color-primary)", fontFamily: "var(--font-heading)", lineHeight: 1 }}>
-                {pubCount || 3}
+            <div className="metric-card">
+              <div className="metric-card-top">
+                <span className="metric-number">{pubCount || 3}</span>
+                <span className="metric-icon-box" aria-hidden="true">📚</span>
               </div>
-              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--color-secondary)", marginTop: 4 }}>
-                Peer-Reviewed Publications
-              </div>
+              <div className="metric-label">Peer-Reviewed Publications</div>
+              <div className="metric-sub">High-impact journals &amp; conference papers</div>
             </div>
 
-            <div style={{ padding: "var(--space-4) var(--space-5)", borderLeft: "3px solid var(--color-primary)", background: "var(--color-bg)" }}>
-              <div style={{ fontSize: "1.75rem", fontWeight: 800, color: "var(--color-primary)", fontFamily: "var(--font-heading)", lineHeight: 1 }}>
-                {memberCount || 3}
+            <div className="metric-card">
+              <div className="metric-card-top">
+                <span className="metric-number">{memberCount || 3}</span>
+                <span className="metric-icon-box" aria-hidden="true">👥</span>
               </div>
-              <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--color-secondary)", marginTop: 4 }}>
-                Faculty &amp; Researchers
-              </div>
+              <div className="metric-label">Faculty &amp; Researchers</div>
+              <div className="metric-sub">Principal investigators &amp; research scholars</div>
             </div>
           </div>
         </div>
@@ -190,41 +177,65 @@ export default async function HomePage() {
       {/* ── 3. RESEARCH DOMAINS ─────────────────────── */}
       <section className="section" style={{ background: "var(--color-bg)" }}>
         <div className="container">
-          <div style={{ marginBottom: "var(--space-8)" }}>
-            <div className="section-eyebrow" style={{ justifyContent: "flex-start" }}>
-              Scientific Scope
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "var(--space-8)", flexWrap: "wrap", gap: "var(--space-4)" }}>
+            <div>
+              <div className="section-eyebrow" style={{ justifyContent: "flex-start" }}>
+                Scientific Scope
+              </div>
+              <h2 className="section-title">
+                Core Research Pillars
+              </h2>
             </div>
-            <h2 className="section-title">
-              Core Research Pillars
-            </h2>
+            <Link href="/research" className="btn btn-outline btn-sm">
+              Explore All Pillars →
+            </Link>
           </div>
 
-          <div className="grid-3" style={{ gap: "var(--space-5)" }}>
+          <div className="pillar-grid">
             {RESEARCH_DOMAINS.map((domain) => (
-              <div key={domain.title} style={{
-                background: "#FFFFFF",
-                border: "1px solid var(--color-border)",
-                borderRadius: "var(--radius-sm)",
-                padding: "var(--space-5)",
-                display: "flex",
-                flexDirection: "column",
-              }}>
-                <div style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  color: "var(--color-primary)",
-                  fontFamily: "var(--font-mono)",
-                  marginBottom: "var(--space-2)",
-                }}>
-                  {domain.code}
+              <Link
+                key={domain.title}
+                href="/research"
+                className="pillar-card"
+              >
+                <div>
+                  <div className="pillar-card-header">
+                    <span className="pillar-code-badge">
+                      PILLAR {domain.code}
+                    </span>
+                    <span className="pillar-icon-box" aria-hidden="true">
+                      {domain.icon}
+                    </span>
+                  </div>
+
+                  <h3 className="pillar-title">
+                    {domain.title}
+                  </h3>
+
+                  <div className="pillar-subtitle">
+                    {domain.subtitle}
+                  </div>
+
+                  <p className="pillar-desc">
+                    {domain.desc}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-2)", lineHeight: 1.3 }}>
-                  {domain.title}
-                </h3>
-                <p style={{ fontSize: "0.85rem", color: "var(--color-text-2)", lineHeight: 1.6, flex: 1, margin: 0 }}>
-                  {domain.desc}
-                </p>
-              </div>
+
+                <div>
+                  <div className="pillar-tags">
+                    {domain.tags.map((tag) => (
+                      <span key={tag} className="pillar-tag-chip">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pillar-action">
+                    <span>Learn More</span>
+                    <span>→</span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -338,9 +349,9 @@ export default async function HomePage() {
       )}
 
       {/* ── 6. DIRECT CONTACT / COLLABORATION ───────── */}
-      <section style={{ background: "#FFFFFF", padding: "var(--space-12) 0" }}>
+      <section style={{ background: "#FFFFFF", padding: "clamp(var(--space-8), 5vw, var(--space-12)) 0" }}>
         <div className="container" style={{ textAlign: "center", maxWidth: 640 }}>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
+          <h2 style={{ fontSize: "clamp(1.25rem, 3.5vw, 1.5rem)", fontWeight: 800, color: "var(--color-secondary)", marginBottom: "var(--space-2)" }}>
             Academic Collaboration &amp; Inquiries
           </h2>
           <p style={{ fontSize: "0.95rem", color: "var(--color-text-2)", marginBottom: "var(--space-6)", lineHeight: 1.6 }}>

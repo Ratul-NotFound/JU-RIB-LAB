@@ -71,36 +71,20 @@ export default function ResearchPage() {
         <div className="container">
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-10)" }}>
             {RESEARCH_THEMES.map((theme, i) => (
-              <div key={theme.title} className={i % 2 === 0 ? "split-research-item" : "split-research-item reverse"}>
-                {i % 2 !== 0 && (
-                  <div>
-                    <div className="highlight-bar" />
-                    <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, marginBottom: "var(--space-4)", color: "var(--color-secondary)" }}>
-                      {theme.title}
-                    </h2>
-                    <p style={{ fontSize: "1rem", color: "var(--color-text-2)", lineHeight: 1.8, marginBottom: "var(--space-5)" }}>
-                      {theme.description}
-                    </p>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                      {theme.areas.map((area) => (
-                        <li key={area} style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", fontSize: "0.9rem", color: "var(--color-text-2)" }}>
-                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", flexShrink: 0 }} />
-                          {area}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <div style={{
-                  position: "relative",
-                  borderRadius: "var(--radius-lg)",
-                  overflow: "hidden",
-                  minHeight: 280,
-                  border: "1px solid var(--color-border)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                }}>
+              <div key={theme.title} className={`split-research-item ${i % 2 !== 0 ? "reverse" : ""}`}>
+                <div
+                  className="research-item-image"
+                  style={{
+                    position: "relative",
+                    borderRadius: "var(--radius-lg)",
+                    overflow: "hidden",
+                    minHeight: 280,
+                    border: "1px solid var(--color-border)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                  }}
+                >
                   <img
                     src={theme.image}
                     alt={theme.title}
@@ -112,36 +96,50 @@ export default function ResearchPage() {
                       objectFit: "cover",
                     }}
                   />
-                  <div style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "rgba(15, 23, 42, 0.88)",
-                  }} />
-                  <div style={{
-                    position: "relative",
-                    zIndex: 1,
-                    padding: "var(--space-6)",
-                    color: "#ffffff",
-                    textAlign: "left",
-                  }}>
-                    <div style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "var(--space-2)",
-                      background: "rgba(255, 255, 255, 0.1)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      padding: "4px 12px",
-                      borderRadius: "var(--radius-sm)",
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      marginBottom: "var(--space-3)",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      color: "#E2E8F0",
-                    }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(15, 23, 42, 0.88)",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "relative",
+                      zIndex: 1,
+                      padding: "var(--space-6)",
+                      color: "#ffffff",
+                      textAlign: "left",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "var(--space-2)",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        border: "1px solid rgba(255, 255, 255, 0.2)",
+                        padding: "4px 12px",
+                        borderRadius: "var(--radius-sm)",
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        marginBottom: "var(--space-3)",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: "#E2E8F0",
+                      }}
+                    >
                       <span>{theme.icon}</span> Research Domain
                     </div>
-                    <div style={{ fontSize: "1.2rem", fontWeight: 700, fontFamily: "var(--font-heading)", color: "#ffffff", marginBottom: 4 }}>
+                    <div
+                      style={{
+                        fontSize: "1.2rem",
+                        fontWeight: 700,
+                        fontFamily: "var(--font-heading)",
+                        color: "#ffffff",
+                        marginBottom: 4,
+                      }}
+                    >
                       {theme.title}
                     </div>
                     <div style={{ fontSize: "0.8rem", color: "#94A3B8" }}>
@@ -149,25 +147,64 @@ export default function ResearchPage() {
                     </div>
                   </div>
                 </div>
-                {i % 2 === 0 && (
-                  <div>
-                    <div className="highlight-bar" />
-                    <h2 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2rem)", fontWeight: 800, marginBottom: "var(--space-4)", color: "var(--color-secondary)" }}>
-                      {theme.title}
-                    </h2>
-                    <p style={{ fontSize: "1rem", color: "var(--color-text-2)", lineHeight: 1.8, marginBottom: "var(--space-5)" }}>
-                      {theme.description}
-                    </p>
-                    <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
-                      {theme.areas.map((area) => (
-                        <li key={area} style={{ display: "flex", alignItems: "center", gap: "var(--space-3)", fontSize: "0.9rem", color: "var(--color-text-2)" }}>
-                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)", flexShrink: 0 }} />
-                          {area}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+
+                <div className="research-item-content">
+                  <div className="highlight-bar" />
+                  <h2
+                    style={{
+                      fontSize: "clamp(1.4rem, 2.5vw, 1.85rem)",
+                      fontWeight: 800,
+                      marginBottom: "var(--space-3)",
+                      color: "var(--color-secondary)",
+                    }}
+                  >
+                    {theme.title}
+                  </h2>
+                  <p
+                    style={{
+                      fontSize: "0.95rem",
+                      color: "var(--color-text-2)",
+                      lineHeight: 1.75,
+                      marginBottom: "var(--space-4)",
+                    }}
+                  >
+                    {theme.description}
+                  </p>
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "var(--space-2)",
+                      padding: 0,
+                      margin: 0,
+                    }}
+                  >
+                    {theme.areas.map((area) => (
+                      <li
+                        key={area}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "var(--space-3)",
+                          fontSize: "0.875rem",
+                          color: "var(--color-text-2)",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 6,
+                            height: 6,
+                            borderRadius: "50%",
+                            background: "var(--color-primary)",
+                            flexShrink: 0,
+                          }}
+                        />
+                        {area}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
