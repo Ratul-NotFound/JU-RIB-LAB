@@ -47,14 +47,14 @@ export default async function ActivitiesPage() {
           {/* Upcoming */}
           {upcoming.length > 0 && (
             <div style={{ marginBottom: "var(--space-16)" }}>
-              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Upcoming Events</div>
-              <div className="grid-3">
+              <div data-reveal="fade" className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Upcoming Events</div>
+              <div className="grid-3 reveal-stagger">
                 {upcoming.map((activity) => (
                   <Link key={activity.id} href={`/activities/${activity.slug}`} style={{ textDecoration: "none" }}>
                     <div className="card card-body" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "var(--space-3)" }}>
                         <span className="badge badge-primary">{activity.type}</span>
-                        <span className="badge badge-success">Upcoming</span>
+                        <span className="badge badge-success badge-live-pulse">Upcoming</span>
                       </div>
                       <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-3)", lineHeight: 1.4 }}>
                         {activity.title}
@@ -77,8 +77,8 @@ export default async function ActivitiesPage() {
           {/* Past */}
           {past.length > 0 && (
             <div>
-              <div className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Archived Events</div>
-              <div className="grid-3">
+              <div data-reveal="fade" className="section-eyebrow" style={{ justifyContent: "flex-start", marginBottom: "var(--space-6)" }}>Archived Events</div>
+              <div className="grid-3 reveal-stagger">
                 {past.map((activity) => (
                   <Link key={activity.id} href={`/activities/${activity.slug}`} style={{ textDecoration: "none" }}>
                     <div className="card card-body" style={{ height: "100%", display: "flex", flexDirection: "column" }}>

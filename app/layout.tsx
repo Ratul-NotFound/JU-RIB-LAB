@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollObserver } from "@/components/common/ScrollObserver";
 import { auth } from "@/lib/auth";
 import { SessionProvider } from "next-auth/react";
 
@@ -40,6 +41,7 @@ export default async function RootLayout({
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <SessionProvider session={session}>
+          <ScrollObserver />
           <Navbar />
           <main>{children}</main>
           <Footer />

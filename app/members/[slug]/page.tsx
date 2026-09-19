@@ -130,7 +130,7 @@ export default async function MemberDetailPage({
         <div className="container">
           <div className="split-content-sidebar">
             {/* Main */}
-            <div>
+            <div data-reveal="left">
               {profile.bio && (
                 <div style={{ marginBottom: "var(--space-8)" }}>
                   <h2 className="text-h3" style={{ marginBottom: "var(--space-4)" }}>
@@ -156,7 +156,7 @@ export default async function MemberDetailPage({
                           <div style={{ fontWeight: 600, color: "var(--color-secondary)" }}>{pm.project.title}</div>
                           <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>{pm.role}</div>
                         </div>
-                        <span className={`badge ${pm.project.status === "ONGOING" ? "badge-success" : "badge-info"}`}>
+                        <span className={`badge ${pm.project.status === "ONGOING" ? "badge-success badge-live-pulse" : "badge-info"}`}>
                           {pm.project.status}
                         </span>
                       </Link>
@@ -167,7 +167,7 @@ export default async function MemberDetailPage({
             </div>
 
             {/* Sidebar */}
-            <div className="card card-body">
+            <div data-reveal="right" className="card card-body">
               <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-5)", color: "var(--color-secondary)" }}>
                 Contact & Academic IDs
               </h3>

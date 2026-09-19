@@ -104,10 +104,10 @@ export default async function ProjectDetailPage({
         <div className="container">
           <div className="split-content-sidebar">
             {/* Main content */}
-            <div>
+            <div data-reveal="left">
               <div style={{
                 position: "relative",
-                borderRadius: "var(--radius-lg)",
+                borderRadius: "var(--radius-sm)",
                 overflow: "hidden",
                 marginBottom: "var(--space-8)",
                 maxHeight: 360,
@@ -149,7 +149,7 @@ export default async function ProjectDetailPage({
             </div>
 
             {/* Sidebar */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
+            <div data-reveal="right" style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
               {/* Project details */}
               <div className="card card-body">
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "var(--space-4)", color: "var(--color-secondary)" }}>
@@ -160,7 +160,7 @@ export default async function ProjectDetailPage({
                     <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-text-faint)", fontWeight: 700, marginBottom: 2 }}>
                       Status
                     </div>
-                    <span className={`badge ${STATUS_COLORS[project.status] ?? "badge-neutral"}`}>{project.status}</span>
+                    <span className={`badge ${STATUS_COLORS[project.status] ?? "badge-neutral"} ${project.status === "ONGOING" ? "badge-live-pulse" : ""}`}>{project.status}</span>
                   </div>
                   {project.startDate && (
                     <div>

@@ -40,7 +40,7 @@ export default async function AboutPage() {
       <section className="section">
         <div className="container">
           <div className="split-2-col">
-            <div>
+            <div data-reveal="left">
               <div className="highlight-bar" />
               <h2 className="text-h2" style={{ marginBottom: "var(--space-5)" }}>Who We Are</h2>
               <div style={{ fontSize: "1.05rem", color: "var(--color-text-2)", lineHeight: 1.8 }}>
@@ -64,13 +64,16 @@ export default async function AboutPage() {
                 )}
               </div>
             </div>
-            <div style={{
-              position: "relative",
-              borderRadius: "var(--radius-lg)",
-              overflow: "hidden",
-              border: "1px solid var(--color-border)",
-              minHeight: 320,
-            }}>
+            <div
+              data-reveal="right"
+              style={{
+                position: "relative",
+                borderRadius: "var(--radius-sm)",
+                overflow: "hidden",
+                border: "1px solid var(--color-border)",
+                minHeight: 320,
+              }}
+            >
               <img
                 src="/images/hero-lab.jpg"
                 alt="Bioresources Technology and Industrial Biotechnology Laboratory Facility"
@@ -80,6 +83,7 @@ export default async function AboutPage() {
                   objectFit: "cover",
                   display: "block",
                   minHeight: 320,
+                  transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               />
               <div style={{
@@ -125,10 +129,10 @@ export default async function AboutPage() {
       {/* ── Vision & Mission ── */}
       <section className="section-sm" style={{ background: "#FFFFFF", borderTop: "1px solid var(--color-border)", borderBottom: "1px solid var(--color-border)" }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: "var(--space-6)" }}>
-            <div style={{
+          <div className="grid-2 reveal-stagger" style={{ gap: "var(--space-6)" }}>
+            <div className="card" style={{
               background: "var(--color-bg)",
-              borderRadius: "var(--radius-lg)",
+              borderRadius: "var(--radius-sm)",
               padding: "var(--space-8)",
               border: "1px solid var(--color-border)",
             }}>
@@ -142,9 +146,9 @@ export default async function AboutPage() {
                 {settings?.vision ?? "To be a globally recognized center of excellence in biotechnology and genetic engineering, driving scientific breakthroughs that improve lives and sustain our planet."}
               </p>
             </div>
-            <div style={{
+            <div className="card" style={{
               background: "var(--color-bg)",
-              borderRadius: "var(--radius-lg)",
+              borderRadius: "var(--radius-sm)",
               padding: "var(--space-8)",
               border: "1px solid var(--color-border)",
             }}>
@@ -165,14 +169,14 @@ export default async function AboutPage() {
       {/* ── Timeline ── */}
       <section className="section">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-reveal="fade">
             <div className="section-eyebrow">Our Journey</div>
             <h2 className="section-title">Key Milestones</h2>
           </div>
           <div className="timeline-container">
             <div className="timeline-line" />
             {MILESTONES.map((m, i) => (
-              <div key={m.year} className={`timeline-item ${i % 2 === 0 ? "even" : "odd"}`}>
+              <div key={m.year} className={`timeline-item ${i % 2 === 0 ? "even" : "odd"}`} data-reveal="scale">
                 <div className="timeline-content">
                   <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "1.5rem", color: "var(--color-accent)" }}>{m.year}</div>
                   <div style={{ fontWeight: 700, color: "var(--color-secondary)", marginBottom: "var(--space-1)" }}>{m.title}</div>
@@ -189,11 +193,11 @@ export default async function AboutPage() {
       {/* ── Facilities ── */}
       <section className="section" style={{ background: "var(--color-surface)" }}>
         <div className="container">
-          <div className="section-header">
+          <div className="section-header" data-reveal="fade">
             <div className="section-eyebrow">Infrastructure</div>
             <h2 className="section-title">Lab Facilities</h2>
           </div>
-          <div className="grid-3">
+          <div className="grid-3 reveal-stagger">
             {[
               { icon: "🌿", title: "Photobioreactor & Algae Unit", desc: "State-of-the-art microalgae cultivation systems and 'Liquid-Tree' urban carbon capture prototypes." },
               { icon: "⚙️", title: "Microbial Fermentation Suite", desc: "Benchtop biofermenters for batch, fed-batch, and solid-state microbial production." },

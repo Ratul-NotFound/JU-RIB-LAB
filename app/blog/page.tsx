@@ -51,7 +51,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
               <p>No articles published yet. Check back soon.</p>
             </div>
           ) : (
-            <div className="grid-3">
+            <div className="grid-3 reveal-stagger">
               {posts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
                   <div className="blog-card" style={{ height: "100%", display: "flex", flexDirection: "column" }}>

@@ -34,7 +34,7 @@ export default function ContactPage() {
         <div className="container">
           <div className="split-contact">
             {/* Contact info */}
-            <div>
+            <div data-reveal="left">
               <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Laboratory Directory & Facilities</h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
                 {[
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 marginTop: "var(--space-8)",
                 padding: "var(--space-6)",
                 background: "var(--color-surface-2)",
-                borderRadius: "var(--radius-lg)",
+                borderRadius: "var(--radius-sm)",
                 border: "1px solid var(--color-border)",
                 display: "flex", flexDirection: "column", gap: "var(--space-3)",
               }}>
@@ -93,12 +93,12 @@ export default function ContactPage() {
             </div>
 
             {/* Contact form */}
-            <div className="card card-body" style={{ padding: "var(--space-8)" }}>
+            <div data-reveal="right" className="card card-body" style={{ padding: "var(--space-8)" }}>
               <h2 className="text-h3" style={{ marginBottom: "var(--space-6)" }}>Direct Scientific Inquiry</h2>
               {status === "sent" ? (
                 <div style={{
                   textAlign: "center", padding: "var(--space-12) var(--space-8)",
-                  background: "var(--color-surface-2)", borderRadius: "var(--radius-lg)",
+                  background: "var(--color-surface-2)", borderRadius: "var(--radius-sm)",
                   border: "1px solid var(--color-border)",
                 }}>
                   <h3 style={{ color: "var(--color-primary)", marginBottom: "var(--space-2)" }}>Inquiry Transmitted</h3>

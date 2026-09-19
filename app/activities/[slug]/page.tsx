@@ -106,6 +106,7 @@ The Department of Biotechnology & Genetic Engineering at Jahangirnagar Universit
 
         {/* Event Key Info Card */}
         <div
+          data-reveal="fade"
           className="card"
           style={{
             padding: "var(--space-6)",
@@ -115,6 +116,7 @@ The Department of Biotechnology & Genetic Engineering at Jahangirnagar Universit
             gap: "var(--space-6)",
             background: "var(--color-surface)",
             border: "1px solid var(--color-border)",
+            borderRadius: "var(--radius-sm)",
           }}
         >
           <div>
@@ -150,11 +152,11 @@ The Department of Biotechnology & Genetic Engineering at Jahangirnagar Universit
 
         {/* Thumbnail if present */}
         {activity.thumbnailUrl && (
-          <div style={{ marginBottom: "var(--space-8)", borderRadius: "var(--radius-lg)", overflow: "hidden" }}>
+          <div data-reveal="scale" style={{ marginBottom: "var(--space-8)", borderRadius: "var(--radius-sm)", overflow: "hidden", border: "1px solid var(--color-border)" }}>
             <img
               src={activity.thumbnailUrl}
               alt={activity.title}
-              style={{ width: "100%", maxHeight: 420, objectFit: "cover" }}
+              style={{ width: "100%", maxHeight: 420, objectFit: "cover", display: "block" }}
             />
           </div>
         )}
@@ -162,6 +164,7 @@ The Department of Biotechnology & Genetic Engineering at Jahangirnagar Universit
         {/* Full Content */}
         {activity.content && (
           <div
+            data-reveal="fade"
             className="card"
             style={{
               padding: "var(--space-8)",
@@ -169,6 +172,7 @@ The Department of Biotechnology & Genetic Engineering at Jahangirnagar Universit
               lineHeight: 1.8,
               fontSize: "1.05rem",
               color: "var(--color-text)",
+              borderRadius: "var(--radius-sm)",
             }}
           >
             <div style={{ whiteSpace: "pre-line" }}>{activity.content}</div>

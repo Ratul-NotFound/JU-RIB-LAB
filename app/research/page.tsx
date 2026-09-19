@@ -71,12 +71,16 @@ export default function ResearchPage() {
         <div className="container">
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-10)" }}>
             {RESEARCH_THEMES.map((theme, i) => (
-              <div key={theme.title} className={`split-research-item ${i % 2 !== 0 ? "reverse" : ""}`}>
+              <div
+                key={theme.title}
+                className={`split-research-item ${i % 2 !== 0 ? "reverse" : ""}`}
+                data-reveal={i % 2 !== 0 ? "right" : "left"}
+              >
                 <div
                   className="research-item-image"
                   style={{
                     position: "relative",
-                    borderRadius: "var(--radius-lg)",
+                    borderRadius: "var(--radius-sm)",
                     overflow: "hidden",
                     minHeight: 280,
                     border: "1px solid var(--color-border)",
@@ -189,13 +193,14 @@ export default function ResearchPage() {
                           gap: "var(--space-3)",
                           fontSize: "0.875rem",
                           color: "var(--color-text-2)",
+                          transition: "transform 180ms ease",
                         }}
                       >
                         <div
                           style={{
                             width: 6,
                             height: 6,
-                            borderRadius: "50%",
+                            borderRadius: "var(--radius-xs)",
                             background: "var(--color-primary)",
                             flexShrink: 0,
                           }}

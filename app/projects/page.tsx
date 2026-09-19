@@ -56,7 +56,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
       <section className="section">
         <div className="container">
           {/* Filter tabs */}
-          <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-8)", flexWrap: "wrap" }}>
+          <div data-reveal="fade" style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-8)", flexWrap: "wrap" }}>
             {[
               { label: "All", value: "" },
               { label: "Ongoing", value: "ONGOING" },
@@ -79,7 +79,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
               <p>No projects found. Check back soon!</p>
             </div>
           ) : (
-            <div className="grid-3">
+            <div className="grid-3 reveal-stagger">
               {projects.map((project) => (
                 <Link key={project.id} href={`/projects/${project.slug}`} style={{ textDecoration: "none" }}>
                   <div className="project-card" style={{ height: "100%", overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -116,7 +116,7 @@ export default async function ProjectsPage({ searchParams }: { searchParams: Pro
                     </div>
                     <div className="project-card-body">
                       <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-3)", flexWrap: "wrap" }}>
-                        <span className={`badge ${STATUS_COLORS[project.status] ?? "badge-neutral"}`}>
+                        <span className={`badge ${STATUS_COLORS[project.status] ?? "badge-neutral"} ${project.status === "ONGOING" ? "badge-live-pulse" : ""}`}>
                           {project.status}
                         </span>
                         {project.category && <span className="badge badge-neutral">{project.category}</span>}

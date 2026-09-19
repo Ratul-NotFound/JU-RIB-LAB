@@ -45,7 +45,7 @@ export default async function PublicationsPage({ searchParams }: { searchParams:
       <section className="section">
         <div className="container">
           {/* Filter tabs */}
-          <div style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-8)", flexWrap: "wrap" }}>
+          <div data-reveal="fade" style={{ display: "flex", gap: "var(--space-2)", marginBottom: "var(--space-8)", flexWrap: "wrap" }}>
             {[
               { label: "All", value: "" },
               { label: "Journal Articles", value: "JOURNAL" },
@@ -75,17 +75,9 @@ export default async function PublicationsPage({ searchParams }: { searchParams:
               <p>No publications found yet.</p>
             </div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
+            <div className="reveal-stagger" style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
               {publications.map((pub) => (
-                <div key={pub.id} style={{
-                  background: "#FFFFFF",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "var(--radius-md)",
-                  padding: "var(--space-6)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "var(--space-3)",
-                }}>
+                <div key={pub.id} className="pub-card">
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--space-4)", flexWrap: "wrap" }}>
                     <div style={{ display: "flex", gap: "var(--space-2)", flexWrap: "wrap", alignItems: "center" }}>
                       <span className={`badge ${TYPE_COLORS[pub.type] ?? "badge-neutral"}`}>

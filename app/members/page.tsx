@@ -41,11 +41,11 @@ export default async function MembersPage() {
           {/* Faculty & Supervisors */}
           {teachers.length > 0 && (
             <div style={{ marginBottom: "var(--space-16)" }}>
-              <div style={{ marginBottom: "var(--space-8)" }}>
+              <div data-reveal="fade" style={{ marginBottom: "var(--space-8)" }}>
                 <div className="section-eyebrow" style={{ justifyContent: "flex-start" }}>Supervisors & Investigators</div>
                 <h2 className="text-h2">Faculty & Principal Investigators</h2>
               </div>
-              <div className="grid-4">
+              <div className="grid-4 reveal-stagger">
                 {teachers.map((member) => (
                   <Link key={member.id} href={`/members/${member.slug}`} style={{ textDecoration: "none" }}>
                     <div className="member-card" style={{ padding: "var(--space-6) var(--space-5)", height: "100%", display: "flex", flexDirection: "column" }}>
@@ -88,11 +88,11 @@ export default async function MembersPage() {
           {/* Students */}
           {students.length > 0 && (
             <div>
-              <div style={{ marginBottom: "var(--space-8)" }}>
+              <div data-reveal="fade" style={{ marginBottom: "var(--space-8)" }}>
                 <div className="section-eyebrow" style={{ justifyContent: "flex-start" }}>Research Fellows & Trainees</div>
                 <h2 className="text-h2">Graduate & Undergraduate Researchers</h2>
               </div>
-              <div className="grid-4">
+              <div className="grid-4 reveal-stagger">
                 {students.map((member) => (
                   <Link key={member.id} href={`/members/${member.slug}`} style={{ textDecoration: "none" }}>
                     <div className="member-card" style={{ padding: "var(--space-5) var(--space-4)", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>

@@ -100,7 +100,7 @@ export default async function BlogPostPage({
                 style={{
                   width: 32,
                   height: 32,
-                  borderRadius: "50%",
+                  borderRadius: "var(--radius-xs)",
                   background: "var(--color-accent)",
                   display: "flex",
                   alignItems: "center",
@@ -128,6 +128,7 @@ export default async function BlogPostPage({
         <div className="container" style={{ maxWidth: 840 }}>
           {/* Article content */}
           <article
+            data-reveal="fade"
             style={{
               fontSize: "1.1rem",
               lineHeight: 1.85,
@@ -139,11 +140,12 @@ export default async function BlogPostPage({
           {/* Author box */}
           {post.author?.profile && (
             <div
+              data-reveal="fade"
               style={{
                 marginTop: "var(--space-12)",
                 padding: "var(--space-6)",
                 background: "var(--color-surface)",
-                borderRadius: "var(--radius-xl)",
+                borderRadius: "var(--radius-sm)",
                 border: "1px solid var(--color-border)",
                 display: "flex",
                 gap: "var(--space-5)",
@@ -154,7 +156,7 @@ export default async function BlogPostPage({
                 style={{
                   width: 56,
                   height: 56,
-                  borderRadius: "50%",
+                  borderRadius: "var(--radius-sm)",
                   background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
                   display: "flex",
                   alignItems: "center",
